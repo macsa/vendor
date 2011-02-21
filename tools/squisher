@@ -1,0 +1,194 @@
+#!/bin/sh
+#
+# Squish a otapackage for distribution
+#
+OUT_TARGET_HOST=linux-x86
+MD5=md5sum
+OPTICHARGER=$ANDROID_BUILD_TOP/vendor/macsa/tools/opticharger
+OPTICHARGER_FRAMEWORK=$ANDROID_BUILD_TOP/vendor/macsa/tools/opticharger_framework
+MOD_MDPI=$ANDROID_BUILD_TOP/vendor/macsa/mods/mdpi/*
+MOD_HDPI=$ANDROID_BUILD_TOP/vendor/macsa/mods/hdpi/*
+MOD_DATA=$ANDROID_BUILD_TOP/vendor/macsa/mods/data/terminales
+SPLASH=$ANDROID_BUILD_TOP/vendor/macsa/mods/data/splash/
+QUIET=-q
+DELETE_BINS="applypatch applypatch_static check_prereq recovery updater"
+squash_opts="-force-uid 1000 -force-gid 1000 -no-progress -noappend -no-exports -no-recovery"
+REPACK=$OUT/repack.d
+updater=$REPACK/ota/META-INF/com/google/android/updater-script
+MDPI=0
+G2D=0
+G3D=0
+BATT=0
+CONTROLGALLERY=$OUT/system/app/
+
+# Verificación de entorno de desarrollo operativo
+if [ -z "$OUT" -o ! -d "$OUT" ]; then
+	echo "ERROR: $0 solo funciona con un entorno completo de desarrollo. $OUT debe existir."
+	exit 1
+fi
+
+# Se establece la variable OTAPACKAGE
+OTAPACKAGE=$OUT/$TARGET_PRODUCT-ota-$TARGET_BUILD_VARIANT.$LOGNAME.zip
+if [ ! -f "$OTAPACKAGE" ]; then
+	echo "$OTAPACKAGE no existe!";
+	exit 1
+fi
+
+
+# Discriminación dispositivos MDPI o HDPI
+case "$TARGET_PRODUCT" in
+	macsa_dream_sapphire) MDPI=1 ;;
+	macsa_one) MDPI=1 ;;
+	macsa_legend) MDPI=1 ;;
+	macsa_hero) MDPI=1 ;;
+	macsa_z71) MDPI=1 ;;
+	*) MDPI=0
+esac
+
+# Discriminación de que dispositivos llevarán Gallery3D y cuales no
+case "$TARGET_PRODUCT" in
+	macsa_buzz) G3D=1 ;;
+	macsa_hero) G3D=1 ;;
+	macsa_z71) G3D=1 ;;
+	*) G3D=0
+esac
+
+# Discriminación de que dispositivos llevan Galeria 2D
+case "$TARGET_PRODUCT" in
+	macsa_dream_sapphire) G2D=1 ;;
+	macsa_legend) G2D=1 ;;
+	*) G2D=0
+esac
+
+# Discriminación de que dispositivos llevan control especial
+case "$TARGET_PRODUCT" in
+	macsa_dream_sapphire) DREAM=1 ;;
+	*) DREAM=0
+esac
+
+
+# Elimina cualquier directorio de un trabajo antiguo
+printf "Limpiando entorno..."
+rm -rf $REPACK
+mkdir -p $REPACK
+echo
+
+# Descomprime el otapackage y ejecuta opticharge en todos los apks
+mkdir $REPACK/ota
+(
+cd $REPACK/ota
+printf "Desempaquetando $OTAPACKAGE..."
+unzip $QUIET $OTAPACKAGE
+echo
+
+# Copiado de archivos base mdpi o hdpi
+mkdir $REPACK/ota/data
+if [ "$MDPI" -eq 1 ]; then
+	cp -rf $MOD_MDPI $REPACK/ota/
+else
+	cp -rf $MOD_HDPI $REPACK/ota/
+fi
+
+# Copiado de archivos base data
+cp -rf $MOD_DATA/common/* $REPACK/ota/data/
+case "$TARGET_PRODUCT" in
+	aosp_passion) cp -rf $MOD_DATA/passion/* $REPACK/ota/ ;;
+	*) printf "REVISA EL PRODUCT QUE ESTÁS COMPILANDO, NO TIENE CONFIGURACIÓN DE COPIADO DE ""DATA"""
+esac
+
+
+# Renombrado Gallery dependiendo del dispositivo que sea
+if [ "$G3D" -eq 1 ]; then
+	mv $REPACK/ota/system/app/Gallery.apk $REPACK/ota/system/app/Gallery.app
+	echo " "
+	echo " Activado Gallery 3D y desactivado Gallery 2D"
+	echo " "
+else
+	echo " "
+fi
+
+# Renombrado Gallery dependiendo del dispositivo que sea
+if [ "$G2D" -eq 1 ]; then
+	mv $REPACK/ota/system/app/Gallery3D.apk $REPACK/ota/system/app/Gallery3D.app
+	echo " Activado Gallery 2D y desactivado Gallery 3D"
+	echo " "
+else
+	echo " "
+fi
+
+echo
+cd $REPACK/ota/system/framework
+# Ejecuta opticharger especial sobre el framework para copiar las imagenes modificadas de la rom dentro de él
+$OPTICHARGER_FRAMEWORK framework-res.apk
+#Ejecuta opticharger sobre el resto de apks de la rom
+cd $REPACK/ota/system/app
+find ./ -name \*.apk | xargs  --max-args=1 --max-procs=`grep 'processor' /proc/cpuinfo | wc -l`  $OPTICHARGER
+)
+
+# Modificaciones de SuperGinger
+rm -rf $REPACK/ota/system/app/CMStats.apk
+rm -rf $REPACK/ota/system/app/CMWallpapers.apk
+rm -rf $REPACK/ota/system/app/Protips.apk
+rm -rf $REPACK/ota/system/app/Provision.apk
+rm -rf $REPACK/ota/system/app/QuickSearchBox.apk
+rm -rf $REPACK/ota/system/app/SpareParts.apk
+rm -rf $REPACK/ota/system/bin/backuptool.sh
+rm -rf $REPACK/ota/system/etc/CHANGELOG-CM.txt
+rm -rf $REPACK/ota/system/etc/init.d
+rm -rf $REPACK/ota/system/app/RomManager.apk
+rm -rf $REPACK/ota/system/app/OpenWnn.apk
+rm -rf $REPACK/ota/system/app/PinyinIME.apk
+mv $REPACK/ota/system/app/Development.apk $REPACK/ota/system/app/Development.app
+mv $REPACK/ota/system/app/FileManager.apk $REPACK/ota/system/app/FileManager.app
+mv $REPACK/ota/system/app/Stk.apk $REPACK/ota/system/app/Stk.app
+
+# Corregir build.prop
+sed -i \
+	-e '/ro\.kernel\.android\.checkjni/d' \
+	-e '/ro\.build\.type/s/eng/user/' \
+	$REPACK/ota/system/build.prop
+
+# Eliminar binarios innecesarios
+( cd $REPACK/ota/system/bin; echo $DELETE_BINS | xargs rm -f; )
+
+# Eliminar drivers inalambricos
+rm -rf $REPACK/ota/system/lib/modules/*/kernel/drivers/net
+
+# No se necesita recovery (en caso de existir)
+rm -rf $REPACK/ota/recovery
+
+# Strip modulos
+find $REPACK/ota/system/lib/modules -name "*.ko" -print0 | xargs -0 arm-eabi-strip --strip-unneeded
+
+# Determinar como se llamará el paquete firmado
+MODVERSION=`sed -n -e'/ro\.modversion/s/^.*SuperAosp-//p' $REPACK/ota/system/build.prop`
+: ${MODVERSION:=test}
+OUTFILE=$OUT/SuperAosp-$MODVERSION.zip
+
+# Empaquetar y firmar
+printf "Comprimiendo..."
+( cd $REPACK/ota; zip $QUIET -r $REPACK/update.zip . )
+echo
+printf "Firmando..."
+SECURITYDIR=$ANDROID_BUILD_TOP/build/target/product/security
+java -Xmx512m \
+	-jar $ANDROID_BUILD_TOP/out/host/$OUT_TARGET_HOST/framework/signapk.jar \
+	-w $SECURITYDIR/testkey.x509.pem $SECURITYDIR/testkey.pk8 \
+	$REPACK/update.zip $OUTFILE
+echo
+printf "Limpiando la casa..."
+rm -rf $REPACK
+echo
+
+# Crear md5 para el paquete firmado
+(
+img=`basename $OUTFILE`
+cd `dirname $OUTFILE`
+$MD5 $img >$img.md5sum
+echo
+echo "Paquete creado: $OUTFILE"
+cat $img.md5sum
+echo
+)
+
+exit 0
