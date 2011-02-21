@@ -24,6 +24,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Specific product packages
 PRODUCT_PACKAGES += \
+   AndroidTerm \
    hcitool \
    FM \
    openvpn \
