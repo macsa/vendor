@@ -86,7 +86,6 @@ kernel/drivers/mtd/chips/chipreg.ko
 kernel/drivers/mtd/devices/msm_nand.ko
 kernel/drivers/mtd/nand/nand_ids.ko
 kernel/drivers/net/mii.ko
-kernel/drivers/net/gan-eth.ko
 kernel/drivers/net/ppp_generic.ko
 kernel/drivers/net/ppp_async.ko
 kernel/drivers/net/ppp_deflate.ko
