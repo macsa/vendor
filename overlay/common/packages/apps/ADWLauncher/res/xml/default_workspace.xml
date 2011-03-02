@@ -94,6 +94,15 @@
         launcher:x="0"
         launcher:y="3" />
 
+    <appwidget
+        launcher:packageName="com.android.deskclock"
+        launcher:className="com.android.alarmclock.AnalogAppWidgetProvider"
+        launcher:screen="2"
+        launcher:x="0"
+        launcher:y="0"
+        launcher:spanX="4"
+        launcher:spanY="2" />
+
     <!--<favorite
         launcher:packageName="com.SupSetupv5"
         launcher:className="org.jros.SupSetup.Main"
