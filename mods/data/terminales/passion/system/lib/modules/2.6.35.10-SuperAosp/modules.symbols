@@ -16,7 +16,6 @@ alias symbol:svc_gss_principal auth_rpcgss
 alias symbol:rpc_unlink sunrpc
 alias symbol:locks_in_grace lockd
 alias symbol:lockd_up lockd
-alias symbol:lzo1x_1_compress lzo_compress
 alias symbol:cache_flush sunrpc
 alias symbol:rpc_create sunrpc
 alias symbol:nfs4_acl_write_who nfsd
@@ -99,7 +98,6 @@ alias symbol:rpc_uaddr2sockaddr sunrpc
 alias symbol:rpc_peeraddr2str sunrpc
 alias symbol:xdr_encode_pages sunrpc
 alias symbol:xdr_read_pages sunrpc
-alias symbol:lzo1x_decompress_safe lzo_decompress
 alias symbol:qword_addhex sunrpc
 alias symbol:svc_sock_create sunrpc
 alias symbol:svc_sock_destroy sunrpc
