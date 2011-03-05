@@ -1,0 +1,13 @@
+#!/system/bin/sh
+echo "Instalando Lenguaje para GPS si es necesario en 120 segundos"
+sleep 120;
+echo " Activando Instalador GPS"
+if [ -e /data/lang/com.svox.langpack.installer.apk ];
+	then
+echo "***** Se instalara GPS";
+busybox chown system.system /data/installlangpack;
+busybox chmod 0755 /data/installlangpack;
+	/data/installlangpack &
+fi;
+exit;
+
