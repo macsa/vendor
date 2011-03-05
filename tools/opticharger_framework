@@ -18,26 +18,26 @@ else
 fi
 
 case "$TARGET_PRODUCT" in
-	macsa_buzz) MDPI=1 ;;
-	macsa_dream_sapphire) MDPI=1 ;;
-	macsa_one) MDPI=1 ;;
-	macsa_legend) MDPI=1 ;;
-	macsa_hero) MDPI=1 ;;
-	macsa_z71) MDPI=1 ;;
+	aosp_buzz) MDPI=1 ;;
+	aosp_dream_sapphire) MDPI=1 ;;
+	aosp_geeksphone) MDPI=1 ;;
+	aosp_legend) MDPI=1 ;;
+	aosp_hero) MDPI=1 ;;
+	aosp_z71) MDPI=1 ;;
 	*) MDPI=0
 esac
 
-case "$TARGET_PRODUCT" in
-	macsa_one) BATT=1 ;;
-	macsa_passio) BATT=1 ;;
-	*) BATT=0
-esac
+#case "$TARGET_PRODUCT" in
+#	aosp_geeksphone) BATT=1 ;;
+#	aosp_passion) BATT=1 ;;
+#	*) BATT=0
+#esac
 
 # Discriminación de que dispositivos llevarán splash
 case "$TARGET_PRODUCT" in
-	macsa_one) NOANIM=1 ;;
-        macsa_hero) NOANIM=1 ;;
-        macsa_dream_sapphire) NOANIM=1 ;;
+	aosp_geeksphone) NOANIM=1 ;;
+        aosp_hero) NOANIM=1 ;;
+        aosp_dream_sapphire) NOANIM=1 ;;
         aosp_passion) NOANIM=1 ;;
 	*) NOANIM=0
 esac
@@ -160,7 +160,7 @@ fi
 fi
 
 case "$TARGET_PRODUCT" in
-	macsa_one) cp -rf $FRAME_IMG_MDPI_ONE res/ ;;
+	aosp_geeksphone) cp -rf $FRAME_IMG_MDPI_ONE res/ ;;
 	*)
 esac
 

@@ -18,6 +18,8 @@ updater=$REPACK/ota/META-INF/com/google/android/updater-script
 MDPI=0
 G2D=0
 G3D=0
+ONE=0
+DREAM=0
 BATT=0
 CONTROLGALLERY=$OUT/system/app/
 
@@ -37,35 +39,76 @@ fi
 
 # Discriminación dispositivos MDPI o HDPI
 case "$TARGET_PRODUCT" in
-	macsa_dream_sapphire) MDPI=1 ;;
-	macsa_one) MDPI=1 ;;
-	macsa_legend) MDPI=1 ;;
-	macsa_hero) MDPI=1 ;;
-	macsa_z71) MDPI=1 ;;
+	aosp_dream_sapphire) MDPI=1 ;;
+	aosp_geeksphone) MDPI=1 ;;
 	*) MDPI=0
 esac
 
 # Discriminación de que dispositivos llevarán Gallery3D y cuales no
 case "$TARGET_PRODUCT" in
-	macsa_buzz) G3D=1 ;;
-	macsa_hero) G3D=1 ;;
-	macsa_z71) G3D=1 ;;
+	aosp_buzz) G3D=1 ;;
+	aosp_hero) G3D=1 ;;
+	aosp_z71) G3D=1 ;;
 	*) G3D=0
 esac
 
 # Discriminación de que dispositivos llevan Galeria 2D
 case "$TARGET_PRODUCT" in
-	macsa_dream_sapphire) G2D=1 ;;
-	macsa_legend) G2D=1 ;;
+	aosp_dream_sapphire) G2D=1 ;;
 	*) G2D=0
+esac
+
+# Discriminación de que dispositivos llevarán splash
+case "$TARGET_PRODUCT" in
+	aosp_geeksphone) ONE=1 ;;
+	*) ONE=0
 esac
 
 # Discriminación de que dispositivos llevan control especial
 case "$TARGET_PRODUCT" in
-	macsa_dream_sapphire) DREAM=1 ;;
+	aosp_dream_sapphire) DREAM=1 ;;
 	*) DREAM=0
 esac
 
+# Control de Gallery 2D
+if [ "$G2D" -eq 1 ];
+then
+if [ ! -f $CONTROLGALLERY/Gallery.apk ]
+then
+	echo " "
+	echo " Gallery.apk no esta compilado, ejecuta make Gallery y make otapackage"
+	echo " "
+	exit 1
+else
+	echo " "
+	echo " Control de Gallery.apk correcto"
+	echo " "
+fi
+fi
+
+# Si se requiere squashfs se verifica si existe el comando y su versión
+if [ "$WANT_SQUASHFS" -eq 1 ]; then
+	fatal=0
+	MKSQUASHFS_VER_REQ=4
+	if type mksquashfs >/dev/null 2>&1; then
+		if mksquashfs -version | grep -q "version $MKSQUASHFS_VER_REQ"; then :; else
+			echo
+			echo "ERROR: mksquashfs debe estar al menos en versión $MKSQUASHFS_VER_REQ para este build."
+			fatal=1
+		fi
+	else
+		echo
+		echo "ERROR: $TARGET_PRODUCT requiere mksquashfs."
+		fatal=1
+	fi
+
+	if [ "$fatal" -ne 0 ]; then
+		echo
+		echo "       Paquete sin optimizar está disponible en"
+		echo "         $OTAPACKAGE"
+		exit $fatal
+	fi
+fi
 
 # Elimina cualquier directorio de un trabajo antiguo
 printf "Limpiando entorno..."
@@ -92,10 +135,43 @@ fi
 # Copiado de archivos base data
 cp -rf $MOD_DATA/common/* $REPACK/ota/data/
 case "$TARGET_PRODUCT" in
+	aosp_dream_sapphire) cp -rf $MOD_DATA/dream_sapphire/* $REPACK/ota/ ;;
+	aosp_geeksphone) cp -rf $MOD_DATA/one/* $REPACK/ota/ ;;
 	aosp_passion) cp -rf $MOD_DATA/passion/* $REPACK/ota/ ;;
 	*) printf "REVISA EL PRODUCT QUE ESTÁS COMPILANDO, NO TIENE CONFIGURACIÓN DE COPIADO DE ""DATA"""
 esac
 
+# Necesario para GeeksPhone One
+if [ "$ONE" -eq 1 ]; then
+	echo " "
+	echo " Pasando archivos de system a data para conseguir espacio"
+	echo " "
+	cp -rf $SPLASH/one/splash.img $REPACK/ota/
+	rm -rf $REPACK/ota/system/app/RomManager.apk
+	mv  $REPACK/ota/system/app/Gmail.apk $REPACK/ota/data/app/com.google.android.gm.apk
+	mv  $REPACK/ota/system/app/Street.apk $REPACK/ota/data/app/com.google.android.street.apk
+	mv  $REPACK/ota/system/app/YouTube.apk $REPACK/ota/data/app/com.google.android.youtube.apk
+	mv  $REPACK/ota/system/app/Maps.apk $REPACK/ota/data/app/com.android.apps.maps.apk
+	mv  $REPACK/ota/system/app/VoiceSearch.apk $REPACK/ota/data/app/com.google.android.voiceSearch.apk
+else
+	echo " "
+	echo " No es un One"
+	echo " "
+fi
+
+# Necesario para Dream&Magic
+if [ "$DREAM" -eq 1 ]; then
+	rm -rf $REPACK/ota/system/app/RomManager.apk
+	mv  $REPACK/ota/system/app/Gmail.apk $REPACK/ota/data/app/com.google.android.gm.apk
+	mv  $REPACK/ota/system/app/Maps.apk $REPACK/ota/data/app/com.android.apps.maps.apk
+	mv  $REPACK/ota/system/app/VoiceSearch.apk $REPACK/ota/data/app/com.google.android.voiceSearch.apk
+	mv  $REPACK/ota/system/app/Street.apk $REPACK/ota/data/app/com.google.android.street.apk
+	mv  $REPACK/ota/system/app/YouTube.apk $REPACK/ota/data/app/com.google.android.youtube.apk
+else
+	echo " "
+	echo " No es un Dream/Magic"
+	echo " "
+fi
 
 # Renombrado Gallery dependiendo del dispositivo que sea
 if [ "$G3D" -eq 1 ]; then
@@ -125,9 +201,7 @@ cd $REPACK/ota/system/app
 find ./ -name \*.apk | xargs  --max-args=1 --max-procs=`grep 'processor' /proc/cpuinfo | wc -l`  $OPTICHARGER
 )
 
-# Modificaciones de SuperGinger
-rm -rf $REPACK/ota/system/app/CMStats.apk
-rm -rf $REPACK/ota/system/app/CMWallpapers.apk
+# Modificaciones de SuperAosp
 rm -rf $REPACK/ota/system/app/Protips.apk
 rm -rf $REPACK/ota/system/app/Provision.apk
 rm -rf $REPACK/ota/system/app/QuickSearchBox.apk
