@@ -27,13 +27,14 @@ case "$TARGET_PRODUCT" in
 	*) MDPI=0
 esac
 
-#case "$TARGET_PRODUCT" in
-#	aosp_geeksphone) BATT=1 ;;
-#	aosp_passion) BATT=1 ;;
-#	*) BATT=0
-#esac
+# Discriminación de que dispositivos no tendran bateria circular
+case "$TARGET_PRODUCT" in
+	aosp_geeksphone) BATT=0 ;;
+	aosp_passion) BATT=0 ;;
+	*) BATT=0
+esac
 
-# Discriminación de que dispositivos llevarán splash
+# Discriminación de que dispositivos no tendran animacion especial
 case "$TARGET_PRODUCT" in
 	aosp_geeksphone) NOANIM=1 ;;
         aosp_hero) NOANIM=1 ;;
@@ -90,7 +91,7 @@ fi
 if [ -e "$1" ];
 then
     NAME=`basename $1`;
-    echo "Optimizing $NAME...";
+    echo " Optimizing $NAME...";
 
     if [ "$2" != "" ];
     then
@@ -126,36 +127,38 @@ then
     cd $TMPDIR/$NAME
     unzip -q $BASE/$1
     if [ "$MDPI" -eq 1 ]; then
-	echo " "
-	echo "Dispositivo MDPI"
+	echo " Dispositivo MDPI"
 	 cp -rf $FRAME_IMG_MDPI res/drawable-mdpi/
     if [ "$BATT" -eq 1 ]; then
-	echo " "
-	echo "Con bateria circular"
+	echo " Con bateria circular"
 	 cp -rf $FRAME_IMG_MDPI_BATTERY res/drawable-mdpi/
     else
-	echo "Con bateria original"
+	echo " Con bateria original"
     fi
 	if [ "$NOANIM" -eq 1 ]; then
-	echo " "
-	echo " Es un dispositivo lento y no se copian animaciones"
-	echo " "
+	echo " Con animaciones normales"
 		else
-	echo " "
-	echo "No es un dispositivo lento y se copian animaciones"
+	echo " Con animaciones especiales"
 	cp -rf $FRAME_ANIM res/anim/
 	echo " "
 fi
     else
-	echo "Dispositivo HDPI"
+	echo " Dispositivo HDPI"
+	if [ "$NOANIM" -eq 1 ]; then
+	echo " Con animaciones normales"
 	 cp -rf $FRAME_IMG_HDPI res/drawable-hdpi/
-	# cp -rf $FRAME_ANIM res/anim/
-    if [ "$BATT" -eq 1 ]; then
 	echo " "
-	echo "Con bateria circular"
+		else
+	echo " Con animaciones especiales"
+	cp -r $FRAME_IMG_HDPI res/drawable-hdpi/
+	cp -r $FRAME_ANIM res/anim/
+	echo " "
+fi
+    if [ "$BATT" -eq 1 ]; then
+	echo " Con bateria circular"
 	 cp -rf $FRAME_IMG_HDPI_BATTERY res/drawable-hdpi/
     else
-	echo "Con bateria original"
+	echo " Con bateria original"
     fi
 fi
 
