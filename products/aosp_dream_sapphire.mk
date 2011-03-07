@@ -35,12 +35,12 @@ PRODUCT_COPY_FILES += \
 
 # Enable Compcache by default on D/S
 PRODUCT_PROPERTY_OVERRIDES += \
+	ro.modversion=SuperAosp-2.8 \
 	ro.compcache.default=18 \
+	ro.config.alarm_alert=Beeps.mp3 \
+	ro.config.ringtone=Uprising.ogg \
+	ro.config.notification_sound=Bubbles.ogg \
 	ro.product.multi_touch_enabled=true
-
-# ro.modversion
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.modversion=SuperAosp-2.8
 
 # Use the audio profile hack
 WITH_DS_HTCACOUSTIC_HACK := true
@@ -57,9 +57,6 @@ PRODUCT_COPY_FILES +=  \
 	vendor/macsa/prebuilt/dream_sapphire/etc/super2/03gps:system/etc/super2/03gps \
 	vendor/macsa/prebuilt/dream_sapphire/etc/super2/04control:system/etc/super2/04control \
 	vendor/macsa/prebuilt/dream_sapphire/etc/permissions/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
-	vendor/macsa/prebuilt/dream_sapphire/etc/01_qcomm_omx.cfg:system/etc/01_qcomm_omx.cfg \
-	vendor/macsa/prebuilt/dream_sapphire/lib/liblvmxipc.so:system/lib/liblvmxipc.so \
-	vendor/macsa/prebuilt/dream_sapphire/lib/libqcomm_omx.so:system/lib/libqcomm_omx.so \
 	vendor/macsa/prebuilt/dream_sapphire/system/usr/keychars/trout-keypad-v3.kcm.bineu:system/usr/keychars/trout-keypad-v3.kcm.bineu \
 	vendor/macsa/prebuilt/dream_sapphire/system/usr/keychars/trout-keypad-v3.kcm.binus:system/usr/keychars/trout-keypad-v3.kcm.binus \
 	vendor/macsa/prebuilt/dream_sapphire/system/usr/keychars/trout-keypad-v3.kcm.bineu:system/usr/keychars/trout-keypad-v3.kcm.bin \
@@ -67,6 +64,10 @@ PRODUCT_COPY_FILES +=  \
 	vendor/macsa/prebuilt/dream_sapphire/system/usr/keylayout/trout-keypad-v3.klus:system/usr/keylayout/trout-keypad-v3.klus \
 	vendor/macsa/prebuilt/dream_sapphire/system/usr/keylayout/trout-keypad-v3.kleu:system/usr/keylayout/trout-keypad-v3.kl \
 	vendor/macsa/prebuilt/dream_sapphire/system/lib/modules/wlan.ko:system/lib/modules/wlan.ko
+
+#	vendor/macsa/prebuilt/dream_sapphire/etc/01_qcomm_omx.cfg:system/etc/01_qcomm_omx.cfg \
+#	vendor/macsa/prebuilt/dream_sapphire/lib/liblvmxipc.so:system/lib/liblvmxipc.so \
+#	vendor/macsa/prebuilt/dream_sapphire/lib/libqcomm_omx.so:system/lib/libqcomm_omx.so \
 
 PRODUCT_LOCALES := \
     es_ES \
