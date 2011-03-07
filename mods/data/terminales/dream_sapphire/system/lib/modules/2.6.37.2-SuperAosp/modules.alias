@@ -1,0 +1,4 @@
+# Aliases extracted from modules themselves.
+alias devname:fuse fuse
+alias char-major-10-229 fuse
+alias sdio:c07v*d* wlan
