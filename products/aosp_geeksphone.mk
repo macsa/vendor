@@ -40,7 +40,7 @@ PRODUCT_PROPERTY_OVERRIDES += dalvik.vm.dexopt-data-only=1
 # Set ro.modversion
 #
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.modversion=SuperAosp-ONE-2.8
+    ro.modversion=SuperAosp-ST@-ONE-2.8
 
 # Copy DS specific prebuilt files
 #
