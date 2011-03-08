@@ -24,11 +24,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_DEVICE=aosp_geeksphone PRODUCT_NAME=aosp
 
 PRODUCT_SPECIFIC_DEFINES += TARGET_PREBUILT_KERNEL=$(TOP)/vendor/macsa/prebuilt/kernels/geeksphone/kernel
 
-# Include the Gallery
-PRODUCT_PACKAGES += \
-	Gallery \
-	Stk
-
 PRODUCT_PACKAGE_OVERLAYS += vendor/macsa/overlay/geeksphone
 
 #
@@ -40,7 +35,7 @@ PRODUCT_PROPERTY_OVERRIDES += dalvik.vm.dexopt-data-only=1
 # Set ro.modversion
 #
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.modversion=SuperAosp-ST@-ONE-2.8
+    ro.modversion=SuperAosp-ST@-ONE-2.8.2
 
 # Copy DS specific prebuilt files
 #

@@ -34,11 +34,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.oem.nosim.ecclist=911,112,999,000,08,118,120,122,110,119,995 \
     ro.ril.emc.mode=2
 
+PRODUCT_PACKAGES += \
+   hcitool \
+   FM \
+   Torch
+
 #
 # Set ro.modversion
 #
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.modversion=SuperAosp-ST@-Nexus-2.8
+    ro.modversion=SuperAosp-ST@-Nexus-2.8.2
 
 #
 # Copy Passion specific prebuilt files
@@ -58,6 +63,8 @@ PRODUCT_LOCALES := \
     eu_ES \
     fr_FR \
     it_IT \
+    pt_PT \
+    ru_RU \
     hdpi
 
 PRODUCT_DEFAULT_LANGUAGE := es_ES

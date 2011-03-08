@@ -164,6 +164,7 @@ fi
 
 case "$TARGET_PRODUCT" in
 	aosp_geeksphone) cp -rf $FRAME_IMG_MDPI_ONE res/ ;;
+	aosp_dream_sapphire) cp -rf $FRAME_IMG_MDPI_ONE res/ ;;
 	*)
 esac
 

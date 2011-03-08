@@ -35,7 +35,7 @@ PRODUCT_COPY_FILES += \
 
 # Enable Compcache by default on D/S
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.modversion=SuperAosp-ST@-D/M-2.8 \
+	ro.modversion=SuperAosp-ST@-DM-2.8.2 \
 	ro.compcache.default=18 \
 	ro.config.alarm_alert=Beeps.mp3 \
 	ro.config.ringtone=Uprising.ogg \
@@ -77,6 +77,8 @@ PRODUCT_LOCALES := \
     eu_ES \
     fr_FR \
     it_IT \
+    pt_PT \
+    ru_RU \
     mdpi
 
 PRODUCT_DEFAULT_LANGUAGE := es_ES

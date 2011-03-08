@@ -25,13 +25,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Specific product packages
 PRODUCT_PACKAGES += \
    AndroidTerm \
-   hcitool \
-   FM \
    openvpn \
    Parts \
-   SpareParts2 \
    Stk \
-   Torch \
    Wallpapers
 
 # Activa Voip

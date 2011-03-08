@@ -168,15 +168,16 @@ esac
 # Necesario para GeeksPhone One
 if [ "$ONE" -eq 1 ]; then
 	echo " Pasando archivos de system a data para conseguir espacio"
-	cp -r $SPLASH/one/splash.img $REPACK/ota/
-	rm -r $REPACK/ota/system/app/RomManager.apk
-	rm -r $REPACK/ota/system/app/FM.apk
-	rm -r $REPACK/ota/system/app/Torch.apk
-	mv  $REPACK/ota/system/app/Gmail.apk $REPACK/ota/data/app/com.google.android.gm.apk
-	mv  $REPACK/ota/system/app/Street.apk $REPACK/ota/data/app/com.google.android.street.apk
-	mv  $REPACK/ota/system/app/YouTube.apk $REPACK/ota/data/app/com.google.android.youtube.apk
-	mv  $REPACK/ota/system/app/Maps.apk $REPACK/ota/data/app/com.android.apps.maps.apk
-	mv  $REPACK/ota/system/app/VoiceSearch.apk $REPACK/ota/data/app/com.google.android.voiceSearch.apk
+cp -rf $SPLASH/one/splash.img $REPACK/ota/
+rm -rf $REPACK/ota/system/app/Launcher2.apk
+rm -rf $REPACK/ota/system/app/RomManager.apk
+rm -rf $REPACK/ota/system/app/FM.apk
+rm -rf $REPACK/ota/system/app/Torch.apk
+mv  $REPACK/ota/system/app/Gmail.apk $REPACK/ota/data/app/com.google.android.gm.apk
+mv  $REPACK/ota/system/app/Street.apk $REPACK/ota/data/app/com.google.android.street.apk
+mv  $REPACK/ota/system/app/YouTube.apk $REPACK/ota/data/app/com.google.android.youtube.apk
+mv  $REPACK/ota/system/app/Maps.apk $REPACK/ota/data/app/com.android.apps.maps.apk
+mv  $REPACK/ota/system/app/VoiceSearch.apk $REPACK/ota/data/app/com.google.android.voiceSearch.apk
 else
 	echo " No es un One"
 fi
@@ -200,12 +201,15 @@ fi
 
 # Necesario para Dream&Magic
 if [ "$DREAM" -eq 1 ]; then
-	rm -r $REPACK/ota/system/app/RomManager.apk
-	mv  $REPACK/ota/system/app/Gmail.apk $REPACK/ota/data/app/com.google.android.gm.apk
-	mv  $REPACK/ota/system/app/Maps.apk $REPACK/ota/data/app/com.android.apps.maps.apk
-	mv  $REPACK/ota/system/app/VoiceSearch.apk $REPACK/ota/data/app/com.google.android.voiceSearch.apk
-	mv  $REPACK/ota/system/app/Street.apk $REPACK/ota/data/app/com.google.android.street.apk
-	mv  $REPACK/ota/system/app/YouTube.apk $REPACK/ota/data/app/com.google.android.youtube.apk
+rm -rf $REPACK/ota/system/app/FM.apk
+rm -rf $REPACK/ota/system/app/Launcher2.apk
+rm -rf $REPACK/ota/system/app/RomManager.apk
+rm -rf $REPACK/ota/system/app/Torch.apk
+mv  $REPACK/ota/system/app/Gmail.apk $REPACK/ota/data/app/com.google.android.gm.apk
+mv  $REPACK/ota/system/app/Maps.apk $REPACK/ota/data/app/com.android.apps.maps.apk
+mv  $REPACK/ota/system/app/VoiceSearch.apk $REPACK/ota/data/app/com.google.android.voiceSearch.apk
+mv  $REPACK/ota/system/app/Street.apk $REPACK/ota/data/app/com.google.android.street.apk
+mv  $REPACK/ota/system/app/YouTube.apk $REPACK/ota/data/app/com.google.android.youtube.apk
 else
 	echo " No es un Dream/Magic"
 fi
@@ -236,7 +240,8 @@ find ./ -name \*.apk | xargs  --max-args=1 --max-procs=`grep 'processor' /proc/c
 )
 
 # Modificaciones de SuperAosp
-rm -r $REPACK/ota/system/app/RomManager.apk
+rm -rf $REPACK/ota/system/app/RomManager.apk
+mv $REPACK/ota/system/app/SpareParts2.apk $REPACK/ota/system/app/SpareParts.apk
 mv $REPACK/ota/system/app/Development.apk $REPACK/ota/system/app/Development.app
 mv $REPACK/ota/system/app/FileManager.apk $REPACK/ota/system/app/FileManager.app
 mv $REPACK/ota/system/app/Stk.apk $REPACK/ota/system/app/Stk.app
@@ -305,7 +310,7 @@ java -Xmx512m \
 	$REPACK/update.zip $OUTFILE
 echo
 printf " Limpiando la casa..."
-rm -r $REPACK
+sudo rm -r $REPACK
 echo
 
 # Crear md5 para el paquete firmado
