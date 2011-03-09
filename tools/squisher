@@ -54,7 +54,7 @@ case "$TARGET_PRODUCT" in
 	*) MDPI=0
 esac
 
-# Discriminación de que dispositivos llevarán Gallery3D y cuales no
+# Discriminación de que dispositivos llevarán Gallery3D
 case "$TARGET_PRODUCT" in
 	aosp_buzz) G3D=1 ;;
 	aosp_hero) G3D=1 ;;
@@ -94,12 +94,10 @@ if [ ! -f $CONTROLGALLERY/Gallery.apk ]
 then
 	echo " "
 	echo " Gallery.apk no esta compilado, ejecuta make Gallery y make otapackage"
-	echo " "
 	exit 1
 else
 	echo " "
 	echo " Control de Gallery.apk correcto"
-	echo " "
 fi
 fi
 
@@ -165,27 +163,11 @@ case "$TARGET_PRODUCT" in
 	*) printf "REVISA EL PRODUCT QUE ESTÁS COMPILANDO, NO TIENE CONFIGURACIÓN DE COPIADO DE ""DATA"""
 esac
 
-# Necesario para GeeksPhone One
-if [ "$ONE" -eq 1 ]; then
-	echo " Pasando archivos de system a data para conseguir espacio"
-cp -rf $SPLASH/one/splash.img $REPACK/ota/
-rm -rf $REPACK/ota/system/app/Launcher2.apk
-rm -rf $REPACK/ota/system/app/RomManager.apk
-rm -rf $REPACK/ota/system/app/FM.apk
-rm -rf $REPACK/ota/system/app/Torch.apk
-mv  $REPACK/ota/system/app/Gmail.apk $REPACK/ota/data/app/com.google.android.gm.apk
-mv  $REPACK/ota/system/app/Street.apk $REPACK/ota/data/app/com.google.android.street.apk
-mv  $REPACK/ota/system/app/YouTube.apk $REPACK/ota/data/app/com.google.android.youtube.apk
-mv  $REPACK/ota/system/app/Maps.apk $REPACK/ota/data/app/com.android.apps.maps.apk
-mv  $REPACK/ota/system/app/VoiceSearch.apk $REPACK/ota/data/app/com.google.android.voiceSearch.apk
-else
-	echo " No es un One"
-fi
-
 # Necesario para Desire
 if [ "$BRAVO" -eq 1 ]; then
-	echo " Es una Desire, por la tanto, "
-	echo " pasamos archivos de system a data para conseguir espacio en /cache"
+	echo " Dispositivo Desire"
+	echo " "
+	echo " Pasando archivos de system a data para conseguir espacio"
 	mv  $REPACK/ota/system/app/Gmail.apk $REPACK/ota/data/app/com.google.android.gm.apk
 	mv  $REPACK/ota/system/app/Maps.apk $REPACK/ota/data/app/com.android.apps.maps.apk
 	mv  $REPACK/ota/system/app/VoiceSearch.apk $REPACK/ota/data/app/com.google.android.voiceSearch.apk
@@ -193,14 +175,15 @@ if [ "$BRAVO" -eq 1 ]; then
 	mv  $REPACK/ota/system/app/YouTube.apk $REPACK/ota/data/app/com.google.android.youtube.apk
 	mv  $REPACK/ota/system/app/RomManager.apk $REPACK/ota/data/app/com.koushikdutta.rommanager.apk
 	mv  $REPACK/ota/system/app/PassionQuickOffice.apk $REPACK/ota/data/app/PassionQuickOffice.apk
-
-
 else
-	echo " No es una Desire"
+	echo
 fi
 
 # Necesario para Dream&Magic
 if [ "$DREAM" -eq 1 ]; then
+	echo " Dispositivo Sapphire"
+	echo " "
+	echo " Pasando archivos de system a data para conseguir espacio"
 rm -rf $REPACK/ota/system/app/FM.apk
 rm -rf $REPACK/ota/system/app/Launcher2.apk
 rm -rf $REPACK/ota/system/app/RomManager.apk
@@ -211,7 +194,26 @@ mv  $REPACK/ota/system/app/VoiceSearch.apk $REPACK/ota/data/app/com.google.andro
 mv  $REPACK/ota/system/app/Street.apk $REPACK/ota/data/app/com.google.android.street.apk
 mv  $REPACK/ota/system/app/YouTube.apk $REPACK/ota/data/app/com.google.android.youtube.apk
 else
-	echo " No es un Dream/Magic"
+	echo
+fi
+
+# Necesario para GeeksPhone One
+if [ "$ONE" -eq 1 ]; then
+	echo " Dispositivo Geeksphone"
+	echo " "
+	echo " Pasando archivos de system a data para conseguir espacio"
+cp -r $SPLASH/one/splash.img $REPACK/ota/
+rm -rf $REPACK/ota/system/app/Launcher2.apk
+rm -rf $REPACK/ota/system/app/RomManager.apk
+rm -rf $REPACK/ota/system/app/FM.apk
+rm -rf $REPACK/ota/system/app/Torch.apk
+mv  $REPACK/ota/system/app/Gmail.apk $REPACK/ota/data/app/com.google.android.gm.apk
+mv  $REPACK/ota/system/app/Street.apk $REPACK/ota/data/app/com.google.android.street.apk
+mv  $REPACK/ota/system/app/YouTube.apk $REPACK/ota/data/app/com.google.android.youtube.apk
+mv  $REPACK/ota/system/app/Maps.apk $REPACK/ota/data/app/com.android.apps.maps.apk
+mv  $REPACK/ota/system/app/VoiceSearch.apk $REPACK/ota/data/app/com.google.android.voiceSearch.apk
+else
+	echo
 fi
 
 # Renombrado Gallery dependiendo del dispositivo que sea
@@ -219,7 +221,7 @@ if [ "$G3D" -eq 1 ]; then
 	mv $REPACK/ota/system/app/Gallery.apk $REPACK/ota/system/app/Gallery.app
 	echo " Activado Gallery 3D y desactivado Gallery 2D"
 else
-	echo " "
+	echo
 fi
 
 # Renombrado Gallery dependiendo del dispositivo que sea
@@ -227,7 +229,7 @@ if [ "$G2D" -eq 1 ]; then
 	mv $REPACK/ota/system/app/Gallery3D.apk $REPACK/ota/system/app/Gallery3D.app
 	echo " Activado Gallery 2D y desactivado Gallery 3D"
 else
-	echo " "
+	echo
 fi
 
 echo
@@ -288,7 +290,7 @@ rm -r $REPACK/ota/recovery
 # Strip modulos
 if [ "$ONE" -eq 1 ]; then
 echo ""
-echo " No necesario en Geeksohone"
+echo " No necesario en Geeksphone"
 else
 find $REPACK/ota/system/lib/modules -name "*.ko" -print0 | xargs -0 arm-eabi-strip --strip-unneeded
 fi
