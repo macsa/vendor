@@ -25,8 +25,6 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/macsa/overlay/dream_sapphire
 #PRODUCT_SPECIFIC_DEFINES += TARGET_KERNEL_DIR=kernel-magic
 #PRODUCT_SPECIFIC_DEFINES += TARGET_KERNEL_CONFIG=aosp_msm_defconfig
 
-PRODUCT_SPECIFIC_DEFINES += TARGET_PREBUILT_KERNEL=$(TOP)/vendor/macsa/prebuilt/kernels/dream_sapphire/kernel
-
 # Include apps
 PRODUCT_PACKAGES += Gallery
 
@@ -62,12 +60,7 @@ PRODUCT_COPY_FILES +=  \
 	vendor/macsa/prebuilt/dream_sapphire/system/usr/keychars/trout-keypad-v3.kcm.bineu:system/usr/keychars/trout-keypad-v3.kcm.bin \
 	vendor/macsa/prebuilt/dream_sapphire/system/usr/keylayout/trout-keypad-v3.kleu:system/usr/keylayout/trout-keypad-v3.kleu \
 	vendor/macsa/prebuilt/dream_sapphire/system/usr/keylayout/trout-keypad-v3.klus:system/usr/keylayout/trout-keypad-v3.klus \
-	vendor/macsa/prebuilt/dream_sapphire/system/usr/keylayout/trout-keypad-v3.kleu:system/usr/keylayout/trout-keypad-v3.kl \
-	vendor/macsa/prebuilt/dream_sapphire/system/lib/modules/wlan.ko:system/lib/modules/wlan.ko
-
-#	vendor/macsa/prebuilt/dream_sapphire/etc/01_qcomm_omx.cfg:system/etc/01_qcomm_omx.cfg \
-#	vendor/macsa/prebuilt/dream_sapphire/lib/liblvmxipc.so:system/lib/liblvmxipc.so \
-#	vendor/macsa/prebuilt/dream_sapphire/lib/libqcomm_omx.so:system/lib/libqcomm_omx.so \
+	vendor/macsa/prebuilt/dream_sapphire/system/usr/keylayout/trout-keypad-v3.kleu:system/usr/keylayout/trout-keypad-v3.kl
 
 PRODUCT_LOCALES := \
     es_ES \
