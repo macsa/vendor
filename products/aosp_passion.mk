@@ -23,7 +23,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=passion BUILD_ID=GRI40 BUILD_DISPLA
 # Build kernel
 PRODUCT_SPECIFIC_DEFINES += TARGET_PREBUILT_KERNEL=
 PRODUCT_SPECIFIC_DEFINES += TARGET_KERNEL_DIR=kernel-2.6.35
-PRODUCT_SPECIFIC_DEFINES += TARGET_KERNEL_CONFIG=aosp_mahimahi_defconfig
+PRODUCT_SPECIFIC_DEFINES += TARGET_KERNEL_CONFIG=aosp_HAVS_mahimahi_defconfig
 
 # Extra Passion overlay
 PRODUCT_PACKAGE_OVERLAYS += vendor/macsa/overlay/passion
@@ -43,7 +43,7 @@ PRODUCT_PACKAGES += \
 # Set ro.modversion
 #
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.modversion=SuperAosp-ST@-Nexus-2.8.2
+    ro.modversion=SuperAosp-ST@-Nexus-2.8.4
 
 #
 # Copy Passion specific prebuilt files
