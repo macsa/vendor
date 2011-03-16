@@ -39,7 +39,7 @@ echo "Instalando aplicaciones"
  for i in /data/*.apk ; do 
 	install -c -D $i /data/app;
 echo "+++ Ejectuando limpieza"
-	busybox rm /$i;
+	busybox rm $i;
  done;
 sleep 2
 

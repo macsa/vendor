@@ -37,6 +37,9 @@ PRODUCT_COPY_FILES += \
 # Common overlay
 PRODUCT_PACKAGE_OVERLAYS += vendor/macsa/overlay/common
 
+# T-Mobile theme engine
+include vendor/macsa/products/themes_common.mk
+
 PRODUCT_COPY_FILES += \
     vendor/macsa/prebuilt/common/bin/verify_cache_partition_size.sh:system/bin/verify_cache_partition_size.sh \
     vendor/macsa/prebuilt/common/sd/vacio:system/sd/vacio \
