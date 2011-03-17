@@ -32,6 +32,12 @@ busybox rm -f /data/app/com.SupSetupv16-2.apk;
 busybox rm -f /system/sd/app/com.SupSetupv16.apk;
 busybox rm -f /system/sd/app/com.SupSetupv16-1.apk;
 busybox rm -f /system/sd/app/com.SupSetupv16-2.apk;
+busybox rm -f /data/app/com.SupSetupV20.apk;
+busybox rm -f /data/app/com.SupSetupV20-1.apk;
+busybox rm -f /data/app/com.SupSetupV20-2.apk;
+busybox rm -f /system/sd/app/com.SupSetupV20.apk;
+busybox rm -f /system/sd/app/com.SupSetupV20-1.apk;
+busybox rm -f /system/sd/app/com.SupSetupV20-2.apk;
 
 sleep 1
 
@@ -44,8 +50,8 @@ echo "+++ Ejectuando limpieza"
 sleep 2
 
 
-busybox chmod 0644 /data/app/com.SupSetupv16-1.apk;
-busybox chown system.system /data/app/com.SupSetupv16-1.apk;
+busybox chmod 0644 /data/app/com.SupSetupV20.apk;
+busybox chown system.system /data/app/com.SupSetupV20.apk;
 
 echo "+++ Acabando"
 if [ -e /data/firstboot.sh ];

@@ -3,8 +3,6 @@ PRODUCT_NAME := aosp
 PRODUCT_BRAND := aosp
 PRODUCT_DEVICE := generic
 
-PRODUCT_PACKAGES += ADWLauncher
-
 # Used by BusyBox
 KERNEL_MODULES_DIR:=/system/lib/modules
 
