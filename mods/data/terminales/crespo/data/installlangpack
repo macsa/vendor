@@ -1,0 +1,13 @@
+#!/system/bin/sh
+#Script Post Instalacion por Super@tmel
+# Script 1
+echo 3 > /sys/class/leds/green/brightness;
+echo "+++ Instalando Lenguaje"
+install -c -D /data/lang/com.svox.langpack.installer.apk /data/app;
+busybox rm -f /data/installlangpack;
+busybox rm -f -r /data/lang;
+rwsystem;
+busybox rm /system/etc/super2/03gps;
+rosystem;
+echo 0 > /sys/class/leds/green/brightness;
+exit;

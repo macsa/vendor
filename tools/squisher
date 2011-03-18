@@ -87,6 +87,18 @@ case "$TARGET_PRODUCT" in
 	*) DREAM=0
 esac
 
+#Control de Dispositivo
+case "$TARGET_PRODUCT" in
+	aosp_passion) nexus=1 ;;
+	*) nexus=0
+esac
+
+#Control de Dispositivo
+case "$TARGET_PRODUCT" in
+	aosp_crespo) nexusS=1 ;;
+	*) nexusS=0
+esac
+
 # Control de Gallery 2D
 if [ "$G2D" -eq 1 ];
 then
@@ -154,6 +166,7 @@ cp -r $MOD_DATA/common/* $REPACK/ota/data/
 case "$TARGET_PRODUCT" in
 	aosp_bravo) cp -r $MOD_DATA/bravo/* $REPACK/ota/ ;;
 	aosp_buzz) cp -r $MOD_DATA/buzz/* $REPACK/ota/ ;;
+	aosp_crespo) cp -r $MOD_DATA/crespo/* $REPACK/ota/ ;;
 	aosp_dream_sapphire) cp -r $MOD_DATA/dream_sapphire/* $REPACK/ota/ ;;
 	aosp_hero) cp -r $MOD_DATA/hero/* $REPACK/ota/ ;;
 	aosp_legend) cp -r $MOD_DATA/legend/* $REPACK/ota/ ;;
@@ -212,6 +225,22 @@ mv  $REPACK/ota/system/app/Street.apk $REPACK/ota/data/app/com.google.android.st
 mv  $REPACK/ota/system/app/YouTube.apk $REPACK/ota/data/app/com.google.android.youtube.apk
 mv  $REPACK/ota/system/app/Maps.apk $REPACK/ota/data/app/com.android.apps.maps.apk
 mv  $REPACK/ota/system/app/VoiceSearch.apk $REPACK/ota/data/app/com.google.android.voiceSearch.apk
+else
+	echo
+fi
+
+# Control de dispositivo para Nexus S
+if [ "$nexusS" -eq 1 ]; then
+	echo " Dispositivo Nexus S"
+	echo " "
+else
+	echo
+fi
+
+# Control de dispositivo para Nexus One
+if [ "$nexus" -eq 1 ]; then
+	echo " Dispositivo Nexus One"
+	echo " "
 else
 	echo
 fi
@@ -287,9 +316,10 @@ rm -rf $REPACK/ota/system/lib/modules/*/kernel/drivers/net
 rm -r $REPACK/ota/recovery
 
 # Strip modulos
-if [ "$ONE" -eq 1 ]; then
+if [ "$ONE" -eq 1 ] || [ "$nexusS" -eq 1 ]; then
 echo ""
-echo " No necesario en Geeksphone"
+echo " No necesita comprimir modulos"
+echo ""
 else
 find $REPACK/ota/system/lib/modules -name "*.ko" -print0 | xargs -0 arm-eabi-strip --strip-unneeded
 fi
@@ -301,6 +331,7 @@ OUTFILE=$OUT/SuperAosp-$MODVERSION.zip
 
 # Empaquetar y firmar
 printf " Comprimiendo..."
+echo ""
 ( cd $REPACK/ota; zip $QUIET -r $REPACK/update.zip . )
 echo
 printf " Firmando..."
@@ -311,7 +342,7 @@ java -Xmx512m \
 	$REPACK/update.zip $OUTFILE
 echo
 printf " Limpiando la casa..."
-sudo rm -r $REPACK
+rm -r $REPACK
 echo
 
 # Crear md5 para el paquete firmado
