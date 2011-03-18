@@ -56,6 +56,7 @@ FRAME_IMG_MDPI_BATTERY=$ANDROID_BUILD_TOP/vendor/macsa/mods/frame_mdpi_battery/*
 FRAME_IMG_HDPI_BATTERY=$ANDROID_BUILD_TOP/vendor/macsa/mods/frame_hdpi_battery/*
 FRAME_ANIM=$ANDROID_BUILD_TOP/vendor/macsa/mods/anim/*
 FRAME_IMG_MDPI_ONE=$ANDROID_BUILD_TOP/vendor/macsa/mods/frame_mdpi_one/*
+FRAME_IMG_HDPI_NEXUSS=$ANDROID_BUILD_TOP/vendor/macsa/mods/frame_mdpi_nexusS/*
 
 if [ "$APKCERTS" = "" ];
 then
@@ -164,9 +165,16 @@ fi
     fi
 fi
 
+#Copia de fondo de pantalla para Geeksphone y Magic
 case "$TARGET_PRODUCT" in
 	aosp_geeksphone) cp -rf $FRAME_IMG_MDPI_ONE res/ ;;
 	aosp_dream_sapphire) cp -rf $FRAME_IMG_MDPI_ONE res/ ;;
+	*)
+esac
+
+#Copia de fondo de pantalla para Nexus S
+case "$TARGET_PRODUCT" in
+	aosp_crespo) cp -rf $FRAME_IMG_HDPI_NEXUSS res/ ;;
 	*)
 esac
 
