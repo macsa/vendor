@@ -184,12 +184,6 @@ ui_print("Escribiendo Boot...");
 assert(package_extract_file("boot.img", "/tmp/boot.img"),
        write_raw_image("/tmp/boot.img", "boot"),
        delete("/tmp/boot.img"));
-ui_print("");
-ui_print("Escribiendo Radio");
-assert(package_extract_file("radio.img", "/tmp/radio.img"),
-       write_raw_image("/tmp/radio.img", "radio"),
-       delete("/tmp/radio.img"));
-show_progress(0.100000, 0);
 ui_print(" ");
 ui_print("Instalacion finalizada!!!!");
 ui_print(" ");
