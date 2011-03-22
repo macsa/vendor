@@ -21,7 +21,9 @@ PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=soju BUILD_ID=GRI54 BUILD_DISPLAY_I
 PRODUCT_PACKAGE_OVERLAYS += vendor/macsa/overlay/crespo
 
 # Add the Torch app
-PRODUCT_PACKAGES += Torch
+PRODUCT_PACKAGES += \
+    DSPManager \
+    Torch
 
 # Extra RIL settings
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -33,7 +35,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Set ro.modversion
 #
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.modversion=SuperAosp-ST@-Nexus-S-2.8.6
+    ro.modversion=SuperAosp-ST@-Nexus-S-2.8.8
 
 #
 # Copy Nexus S specific prebuilt files

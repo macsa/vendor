@@ -35,6 +35,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.emc.mode=2
 
 PRODUCT_PACKAGES += \
+   DSPManager \
    hcitool \
    FM \
    Torch
@@ -43,7 +44,7 @@ PRODUCT_PACKAGES += \
 # Set ro.modversion
 #
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.modversion=SuperAosp-ST@-Nexus-2.8.6-4
+    ro.modversion=SuperAosp-ST@-Nexus-2.8.8
 
 #
 # Copy Passion specific prebuilt files
