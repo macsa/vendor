@@ -46,12 +46,7 @@ echo "Instalando aplicaciones"
 	install -c -D $i /data/app;
 echo "+++ Ejectuando limpieza"
 	busybox rm $i;
- done;
-sleep 2
-
-
-busybox chmod 0644 /data/app/com.SupSetupV20.apk;
-busybox chown system.system /data/app/com.SupSetupV20.apk;
+done;
 
 echo "+++ Acabando"
 if [ -e /data/firstboot.sh ];

@@ -23,6 +23,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Specific product packages
 PRODUCT_PACKAGES += \
    AndroidTerm \
+   libcyanogen-dsp \
    openvpn \
    Parts \
    Stk \
