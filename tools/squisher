@@ -316,7 +316,7 @@ rm -rf $REPACK/ota/system/lib/modules/*/kernel/drivers/net
 rm -r $REPACK/ota/recovery
 
 # Strip modulos
-if [ "$ONE" -eq 1 ] || [ "$nexusS" -eq 1 ]; then
+if [ "$ONE" -eq 1 ] || [ "$nexus" -eq 1 ] || [ "$nexusS" -eq 1 ]; then
 echo ""
 echo " No necesita comprimir modulos"
 echo ""
