@@ -48,3 +48,15 @@ on property:persist.service.supmar=1
 
 on property:persist.service.supmar=0
     start supmar_off
+
+service bootsound /system/bin/bootsound
+ user media
+ group audio
+ disabled
+ oneshot
+
+on property:init.svc.bootanim=running # to correct timin
+ start bootsound
+
+on property:dev.bootcomplete=1
+ stop bootsound

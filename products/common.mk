@@ -14,7 +14,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html \
     ro.com.google.clientidbase=android-google \
     ro.com.android.wifi-watchlist=GoogleGuest \
-    ro.setupwizard.enterprise_mode=1
+    ro.setupwizard.enterprise_mode=1 \
+    ro.config.play.bootsound=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.rommanager.developerid=supermvl \
@@ -55,6 +56,7 @@ PRODUCT_COPY_FILES += \
     vendor/macsa/prebuilt/common/etc/init.local.rc:system/etc/init.local.rc \
     vendor/macsa/prebuilt/common/bin/apps2sd:system/bin/apps2sd \
     vendor/macsa/prebuilt/common/bin/actapps2sd:system/bin/actapps2sd \
+    vendor/macsa/prebuilt/common/bin/bootsound:system/bin/bootsound \
     vendor/macsa/prebuilt/common/bin/compcache:system/bin/compcache \
     vendor/macsa/prebuilt/common/bin/desap:system/bin/desap \
     vendor/macsa/prebuilt/common/bin/fix_permissions:system/bin/fix_permissions \
