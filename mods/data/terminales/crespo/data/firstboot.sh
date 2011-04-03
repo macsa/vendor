@@ -32,12 +32,12 @@ busybox rm -f /data/app/com.SupSetupv16-2.apk;
 busybox rm -f /system/sd/app/com.SupSetupv16.apk;
 busybox rm -f /system/sd/app/com.SupSetupv16-1.apk;
 busybox rm -f /system/sd/app/com.SupSetupv16-2.apk;
-busybox rm -f /data/app/com.SupSetupV20.apk;
-busybox rm -f /data/app/com.SupSetupV20-1.apk;
-busybox rm -f /data/app/com.SupSetupV20-2.apk;
-busybox rm -f /system/sd/app/com.SupSetupV20.apk;
-busybox rm -f /system/sd/app/com.SupSetupV20-1.apk;
-busybox rm -f /system/sd/app/com.SupSetupV20-2.apk;
+busybox rm -f /data/app/org.jros.SupSetupV20.apk;
+busybox rm -f /data/app/org.jros.SupSetupV20-1.apk;
+busybox rm -f /data/app/org.jros.SupSetupV20-2.apk;
+busybox rm -f /system/sd/app/org.jros.SupSetupV20.apk;
+busybox rm -f /system/sd/app/org.jros.SupSetupV20-1.apk;
+busybox rm -f /system/sd/app/org.jros.SupSetupV20-2.apk;
 
 sleep 1
 

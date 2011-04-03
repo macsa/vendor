@@ -9,5 +9,5 @@ include vendor/macsa/products/themes.mk
 
 # Default ringtone
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.ringtone=Uprising.ogg \
+    ro.config.ringtone=Theway.mp3 \
     ro.config.notification_sound=Bubbles.ogg

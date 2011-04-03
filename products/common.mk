@@ -57,6 +57,7 @@ PRODUCT_COPY_FILES += \
     vendor/macsa/prebuilt/common/bin/apps2sd:system/bin/apps2sd \
     vendor/macsa/prebuilt/common/bin/actapps2sd:system/bin/actapps2sd \
     vendor/macsa/prebuilt/common/bin/bootsound:system/bin/bootsound \
+    vendor/macsa/prebuilt/common/bin/bootsound2:system/bin/bootsound2 \
     vendor/macsa/prebuilt/common/bin/compcache:system/bin/compcache \
     vendor/macsa/prebuilt/common/bin/desap:system/bin/desap \
     vendor/macsa/prebuilt/common/bin/fix_permissions:system/bin/fix_permissions \
@@ -90,7 +91,7 @@ PRODUCT_COPY_FILES += \
 	vendor/macsa/prebuilt/common/media/audio/alarms/Beeps.mp3:system/media/audio/notifications/Beeps.mp3 \
 	vendor/macsa/prebuilt/common/media/audio/alarms/Snooze.mp3:system/media/audio/notifications/Snooze.mp3 \
 	vendor/macsa/prebuilt/common/media/audio/ringtones/Old_Phone.mp3:system/media/audio/ringtones/Old_Phone.mp3 \
-	vendor/macsa/prebuilt/common/media/audio/ringtones/Uprising.ogg:system/media/audio/ringtones/Uprising.ogg \
+	vendor/macsa/prebuilt/common/media/audio/ringtones/Theway.mp3:system/media/audio/ringtones/Theway.mp3 \
 	vendor/macsa/prebuilt/common/media/audio/ui/camera_click.ogg:system/media/audio/ui/camera_click.ogg \
 	vendor/macsa/prebuilt/common/media/audio/ui/Lock.ogg:system/media/audio/ui/Lock.ogg \
 	vendor/macsa/prebuilt/common/media/audio/ui/Unlock.ogg:system/media/audio/ui/Unlock.ogg \

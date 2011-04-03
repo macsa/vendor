@@ -36,7 +36,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.modversion=SuperAosp-ST@-DM-2.8.2 \
 	ro.compcache.default=18 \
 	ro.config.alarm_alert=Beeps.mp3 \
-	ro.config.ringtone=Uprising.ogg \
+	ro.config.ringtone=Theway.mp3 \
 	ro.config.notification_sound=Bubbles.ogg \
 	ro.product.multi_touch_enabled=true
 

@@ -4,6 +4,6 @@ bprop=/system/build.prop
 
 play=$(cat $bprop | egrep -c -i -o ro.config.play.bootsound=1)
 if [ "$play" = "1" ]; then
- stagefright -a -o /data/android_boot.mp3
+ stagefright -a -o /data/android_first.mp3
 fi
 exit 0

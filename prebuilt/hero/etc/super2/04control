@@ -35,3 +35,12 @@ then
 echo "+++ Gracias a todos por elegir esta rom, espero que la disfruteis, y agradecimientos a todo el foro de Movilzona"
 echo "***** Con SupSetup"
 fi;
+
+if [ -e /data/ctrsound ];
+then
+echo "Primera instalacion";
+rm /data/ctrsound;
+else
+sleep 60
+stop bootsound;
+fi;

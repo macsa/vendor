@@ -1,5 +1,7 @@
 #!/system/bin/sh
 echo "Instalando Lenguaje para GPS si es necesario en 250 segundos"
+busybox cp /system/bin/bootsound2 /system/bin/bootsound;
+busybox rm /system/bin/bootsound2;
 sleep 250;
 echo " Activando Instalador GPS"
 if [ -e /data/lang/com.svox.langpack.installer.apk ];

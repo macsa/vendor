@@ -58,5 +58,5 @@ service bootsound /system/bin/bootsound
 on property:init.svc.bootanim=running # to correct timin
  start bootsound
 
-on property:dev.bootcomplete=1
- stop bootsound
+#on property:dev.bootcomplete=1
+# stop bootsound
