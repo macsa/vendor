@@ -272,6 +272,15 @@ find ./ -name \*.apk | xargs  --max-args=1 --max-procs=`grep 'processor' /proc/c
 
 # Modificaciones de SuperAosp
 rm -rf $REPACK/ota/system/app/RomManager.apk
+rm -rf $REPACK/ota/system/app/OpenWnn.apk
+rm -rf $REPACK/ota/system/app/PinyinIME.apk
+rm -rf $REPACK/ota/system/app/Protips.apk 
+rm -rf $REPACK/ota/system/app/Provision.apk
+rm -rf $REPACK/ota/system/app/QuickSearchBox.apk
+rm -rf $REPACK/ota/system/app/SpareParts.apk
+rm -rf $REPACK/ota/system/app/SpeechRecorder.apk
+rm -rf $REPACK/ota/system/lib/libWnnJpnDic.so
+rm -rf $REPACK/ota/system/lib/libwnndict.so
 mv $REPACK/ota/system/app/Development.apk $REPACK/ota/system/app/Development.app
 mv $REPACK/ota/system/app/FileManager.apk $REPACK/ota/system/app/FileManager.app
 mv $REPACK/ota/system/app/Stk.apk $REPACK/ota/system/app/Stk.app

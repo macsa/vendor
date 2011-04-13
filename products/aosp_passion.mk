@@ -39,13 +39,14 @@ PRODUCT_PACKAGES += \
    DSPManager \
    hcitool \
    FM \
+   Launcher2 \
    Torch
 
 #
 # Set ro.modversion
 #
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.modversion=SuperAosp-ST@-Nexus-4.8
+    ro.modversion=SuperAosp-ST@-Nexus-6.0
 
 #
 # Copy Passion specific prebuilt files

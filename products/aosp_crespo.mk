@@ -17,11 +17,13 @@ PRODUCT_MODEL := Nexus S
 PRODUCT_MANUFACTURER := Samsung
 PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=soju BUILD_ID=GRI54 BUILD_DISPLAY_ID=GRI54 BUILD_FINGERPRINT=google/soju/crespo:2.3.3/GRI40/102588:user/release-keys PRIVATE_BUILD_DESC="soju-user 2.3.3 GRI54 102588 release-keys"
 
+
 # Extra Crespo overlay
 PRODUCT_PACKAGE_OVERLAYS += vendor/macsa/overlay/crespo
 
 # Add the Torch app
 PRODUCT_PACKAGES += \
+    Launcher2 \
     DSPManager \
     Torch
 
@@ -35,7 +37,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Set ro.modversion
 #
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.modversion=SuperAosp-ST@-Nexus-S-4.8
+    ro.modversion=SuperAosp-ST@-Nexus-S-6.0
 
 #
 # Copy Nexus S specific prebuilt files

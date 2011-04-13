@@ -2,10 +2,14 @@
 $(call inherit-product, device/geeksphone/one/one.mk)
 
 # Inherit some common cyanogenmod stuff.
-$(call inherit-product, vendor/macsa/products/common_full.mk)
+$(call inherit-product, vendor/macsa/products/common_small.mk)
 
 # Include GSM stuff
 $(call inherit-product, vendor/macsa/products/gsm.mk)
+
+#Activa el ADWLauncher
+PRODUCT_PACKAGES += \
+   ADWLauncher
 
 #
 # Setup device specific product configuration.
@@ -33,7 +37,7 @@ PRODUCT_PROPERTY_OVERRIDES += dalvik.vm.dexopt-data-only=1
 # Set ro.modversion
 #
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.modversion=SuperAosp-ST@-ONE-2.8.4
+    ro.modversion=SuperAosp-ST@-ONE-6.0
 
 # Copy DS specific prebuilt files
 #

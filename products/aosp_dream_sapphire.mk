@@ -25,6 +25,10 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/macsa/overlay/dream_sapphire
 #PRODUCT_SPECIFIC_DEFINES += TARGET_KERNEL_DIR=kernel-magic
 #PRODUCT_SPECIFIC_DEFINES += TARGET_KERNEL_CONFIG=aosp_msm_defconfig
 
+#Activa el ADWLauncher
+PRODUCT_PACKAGES += \
+   ADWLauncher
+
 # Include apps
 PRODUCT_PACKAGES += Gallery
 
