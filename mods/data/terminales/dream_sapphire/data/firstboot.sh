@@ -47,10 +47,6 @@ echo "Instalando aplicaciones"
 echo "+++ Ejectuando limpieza"
 	busybox rm /$i;
  done;
-sleep 2
-
-busybox chmod 0644 /data/app/com.SupSetupv16-1.apk;
-busybox chown system.system /data/app/com.SupSetupv16-1.apk;
 
 echo "+++ Acabando"
 if [ -e /data/firstboot.sh ];
