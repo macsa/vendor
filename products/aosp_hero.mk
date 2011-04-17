@@ -26,7 +26,8 @@ PRODUCT_PACKAGES += \
     Gallery
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.modversion=SuperAosp-ST@-Hero-2.8.6
+    ro.modversion=SuperAosp-ST@-Hero-6.0 \
+    ro.stats.romversion=6.0
 
 PRODUCT_COPY_FILES +=  \
 	vendor/macsa/prebuilt/hero/etc/super/04modulos:system/etc/super/04modulos \
