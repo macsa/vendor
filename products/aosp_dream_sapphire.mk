@@ -37,7 +37,7 @@ PRODUCT_COPY_FILES += \
 
 # Enable Compcache by default on D/S
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.modversion=SuperAosp-ST@-DM-2.8.2 \
+	ro.modversion=SuperAosp-ST@-DM-6.0 \
 	ro.compcache.default=18 \
 	ro.config.alarm_alert=Beeps.mp3 \
 	ro.config.ringtone=Theway.mp3 \
