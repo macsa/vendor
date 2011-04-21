@@ -46,8 +46,8 @@ PRODUCT_PACKAGES += \
 # Set ro.modversion
 #
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.modversion=SuperAosp-ST@-Nexus-6.0 \
-    ro.stats.romversion=6.0
+    ro.modversion=SuperAosp-ST@-Nexus-6.2 \
+    ro.stats.romversion=6.2
 
 #
 # Copy Passion specific prebuilt files

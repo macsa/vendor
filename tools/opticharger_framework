@@ -40,8 +40,8 @@ case "$TARGET_PRODUCT" in
 	aosp_geeksphone) NOANIM=1 ;;
         aosp_hero) NOANIM=1 ;;
         aosp_dream_sapphire) NOANIM=1 ;;
-        aosp_passion) NOANIM=1 ;;
-	aosp_crespo) NOANIM=1 ;;
+        aosp_passion) NOANIM=0 ;;
+	aosp_crespo) NOANIM=0 ;;
 	*) NOANIM=0
 esac
 
