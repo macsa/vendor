@@ -9,6 +9,16 @@
 # cyanogen - shade@chemlab.org
 # ChrisSoyars - me@ctso.me
 
+#Colores
+YELLOW="\033[1;33m"	#el primer número es 1 (negrita); después el color
+GREEN="\033[1;32m"
+RED="\033[1;31m"
+BLUE="\033[1;34m"
+BLUEs="\033[1;36m"
+WHITE="\033[1;37m"
+ENDCOLOR="\033[0m"
+
+
 OUT_TARGET_HOST=$(uname -a | grep Darwin)
 if [ -z "$OUT_TARGET_HOST" ]
 then
@@ -94,7 +104,8 @@ fi
 if [ -e "$1" ];
 then
     NAME=`basename $1`;
-    echo " Optimizing $NAME...";
+    echo $GREEN" Optimizando $NAME..."$ENDCOLOR;
+    echo " "
 
     if [ "$2" != "" ];
     then
@@ -130,7 +141,7 @@ then
     cd $TMPDIR/$NAME
     unzip -q $BASE/$1
 if [ "$MDPI" -eq 1 ]; then
-   echo " Dispositivo MDPI"
+   echo $BLUEs" Dispositivo MDPI"$ENDCOLOR
    cp -rf $FRAME_IMG_MDPI res/drawable-mdpi/
 #    	if [ "$BATT" -eq 1 ]; then
 #	   echo " Con bateria circular"
@@ -140,20 +151,24 @@ if [ "$MDPI" -eq 1 ]; then
 #    	fi
 
 	if [ "$NOANIM" -eq 1 ]; then
-	   echo " Con animaciones normales"
+	   echo " "
+	   echo $WHITE" Con animaciones normales"$ENDCOLOR
 	else
-	   echo " Con animaciones especiales"
+	   echo " "
+	   echo $WHITE" Con animaciones especiales"$ENDCOLOR
 	   cp -rf $FRAME_ANIM res/anim/
 	   echo " "
 	fi
 else
-   echo " Dispositivo HDPI"
+   echo $BLUEs" Dispositivo HDPI"$ENDCOLOR
 	if [ "$NOANIM" -eq 1 ]; then
-	   echo " Con animaciones normales"
+	   echo " "
+	   echo $WHITE" Con animaciones normales"$ENDCOLOR
 	   cp -rf $FRAME_IMG_HDPI res/drawable-hdpi/
 	   echo " "
 	else
-	   echo " Con animaciones especiales"
+	   echo " "
+	   echo $WHITE" Con animaciones especiales"$ENDCOLOR
 	   cp -r $FRAME_IMG_HDPI res/drawable-hdpi/
 	   cp -r $FRAME_ANIM res/anim/
 	   echo " "
@@ -179,7 +194,7 @@ case "$TARGET_PRODUCT" in
 	aosp_crespo) cp -rf $FRAME_IMG_HDPI_NEXUSS res/ ;;
 	*)
 esac
-
+echo $RED
     for x in `find . -name "*.png" | grep -v "\.9.png$" | tr "\n" " "`
     do
         [ $QUIET ] || echo "Crushing $x"
@@ -189,6 +204,7 @@ esac
             mv $x.crushed $x
         fi
     done
+echo $ENDCOLOR
     cp $BASE/$1 $BASE/$1.old
 
     [ $QUIET ] || echo "Repacking apk.."
