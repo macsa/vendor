@@ -28,12 +28,12 @@ case "$TARGET_PRODUCT" in
 esac
 
 # Discriminación de que dispositivos no tendran bateria circular
-case "$TARGET_PRODUCT" in
-	aosp_geeksphone) BATT=0 ;;
-	aosp_passion) BATT=0 ;;
-	aosp_crespo) BATT=0 ;;
-	*) BATT=0
-esac
+#case "$TARGET_PRODUCT" in
+#	aosp_geeksphone) BATT=0 ;;
+#	aosp_passion) BATT=0 ;;
+#	aosp_crespo) BATT=0 ;;
+#	*) BATT=0
+#esac
 
 # Discriminación de que dispositivos no tendran animacion especial
 case "$TARGET_PRODUCT" in
@@ -52,8 +52,8 @@ BASE=`pwd`
 TMPDIR=/tmp/opticharge-$$
 FRAME_IMG_MDPI=$ANDROID_BUILD_TOP/vendor/macsa/mods/frame_mdpi/*
 FRAME_IMG_HDPI=$ANDROID_BUILD_TOP/vendor/macsa/mods/frame_hdpi/*
-FRAME_IMG_MDPI_BATTERY=$ANDROID_BUILD_TOP/vendor/macsa/mods/frame_mdpi_battery/*
-FRAME_IMG_HDPI_BATTERY=$ANDROID_BUILD_TOP/vendor/macsa/mods/frame_hdpi_battery/*
+#FRAME_IMG_MDPI_BATTERY=$ANDROID_BUILD_TOP/vendor/macsa/mods/frame_mdpi_battery/*
+#FRAME_IMG_HDPI_BATTERY=$ANDROID_BUILD_TOP/vendor/macsa/mods/frame_hdpi_battery/*
 FRAME_ANIM=$ANDROID_BUILD_TOP/vendor/macsa/mods/anim/*
 FRAME_IMG_MDPI_ONE=$ANDROID_BUILD_TOP/vendor/macsa/mods/frame_mdpi_one/*
 FRAME_IMG_HDPI_NEXUSS=$ANDROID_BUILD_TOP/vendor/macsa/mods/frame_hdpi_nexusS/*
@@ -129,40 +129,42 @@ then
     trap "rm -rf $TMPDIR; exit" INT TERM EXIT
     cd $TMPDIR/$NAME
     unzip -q $BASE/$1
-    if [ "$MDPI" -eq 1 ]; then
-	echo " Dispositivo MDPI"
-	 cp -rf $FRAME_IMG_MDPI res/drawable-mdpi/
-    if [ "$BATT" -eq 1 ]; then
-	echo " Con bateria circular"
-	 cp -rf $FRAME_IMG_MDPI_BATTERY res/drawable-mdpi/
-    else
-	echo " Con bateria original"
-    fi
+if [ "$MDPI" -eq 1 ]; then
+   echo " Dispositivo MDPI"
+   cp -rf $FRAME_IMG_MDPI res/drawable-mdpi/
+#    	if [ "$BATT" -eq 1 ]; then
+#	   echo " Con bateria circular"
+#	   cp -rf $FRAME_IMG_MDPI_BATTERY res/drawable-mdpi/
+#    	else
+#	   echo " Con bateria original"
+#    	fi
+
 	if [ "$NOANIM" -eq 1 ]; then
-	echo " Con animaciones normales"
-		else
-	echo " Con animaciones especiales"
-	cp -rf $FRAME_ANIM res/anim/
-	echo " "
-fi
-    else
-	echo " Dispositivo HDPI"
+	   echo " Con animaciones normales"
+	else
+	   echo " Con animaciones especiales"
+	   cp -rf $FRAME_ANIM res/anim/
+	   echo " "
+	fi
+else
+   echo " Dispositivo HDPI"
 	if [ "$NOANIM" -eq 1 ]; then
-	echo " Con animaciones normales"
-	 cp -rf $FRAME_IMG_HDPI res/drawable-hdpi/
-	echo " "
-		else
-	echo " Con animaciones especiales"
-	cp -r $FRAME_IMG_HDPI res/drawable-hdpi/
-	cp -r $FRAME_ANIM res/anim/
-	echo " "
-fi
-    if [ "$BATT" -eq 1 ]; then
-	echo " Con bateria circular"
-	 cp -rf $FRAME_IMG_HDPI_BATTERY res/drawable-hdpi/
-    else
-	echo " Con bateria original"
-    fi
+	   echo " Con animaciones normales"
+	   cp -rf $FRAME_IMG_HDPI res/drawable-hdpi/
+	   echo " "
+	else
+	   echo " Con animaciones especiales"
+	   cp -r $FRAME_IMG_HDPI res/drawable-hdpi/
+	   cp -r $FRAME_ANIM res/anim/
+	   echo " "
+	fi
+
+#    	if [ "$BATT" -eq 1 ]; then
+#	   echo " Con bateria circular"
+#	   cp -rf $FRAME_IMG_HDPI_BATTERY res/drawable-hdpi/
+#    	else
+#	   echo " Con bateria original"
+#    	fi
 fi
 
 #Copia de fondo de pantalla para Geeksphone y Magic

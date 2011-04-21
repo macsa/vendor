@@ -22,7 +22,7 @@ G3D=0
 ONE=0
 BRAVO=0
 DREAM=0
-BATT=0
+#BATT=0
 CONTROLGALLERY=$OUT/system/app/
 
 # Verificación de entorno de desarrollo operativo
