@@ -34,6 +34,7 @@ case "$TARGET_PRODUCT" in
 	aosp_legend) MDPI=1 ;;
 	aosp_hero) MDPI=1 ;;
 	aosp_z71) MDPI=1 ;;
+	aosp_zero) MDPI=1 ;;
 	*) MDPI=0
 esac
 
@@ -52,6 +53,7 @@ case "$TARGET_PRODUCT" in
         aosp_dream_sapphire) NOANIM=1 ;;
         aosp_passion) NOANIM=0 ;;
 	aosp_crespo) NOANIM=0 ;;
+	aosp_zero) NOANIM=0 ;;
 	*) NOANIM=0
 esac
 
@@ -186,6 +188,7 @@ fi
 case "$TARGET_PRODUCT" in
 	aosp_geeksphone) cp -rf $FRAME_IMG_MDPI_ONE res/ ;;
 	aosp_dream_sapphire) cp -rf $FRAME_IMG_MDPI_ONE res/ ;;
+	aosp_zero) cp -rf $FRAME_IMG_MDPI_ONE res/ ;;
 	*)
 esac
 

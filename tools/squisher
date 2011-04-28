@@ -59,6 +59,7 @@ case "$TARGET_PRODUCT" in
 	aosp_legend) MDPI=1 ;;
 	aosp_hero) MDPI=1 ;;
 	aosp_z71) MDPI=1 ;;
+	aosp_zero) MDPI=1 ;;
 	*) MDPI=0
 esac
 
@@ -105,6 +106,12 @@ esac
 case "$TARGET_PRODUCT" in
 	aosp_crespo) nexusS=1 ;;
 	*) nexusS=0
+esac
+
+#Control de Dispositivo
+case "$TARGET_PRODUCT" in
+	aosp_zero) ZERO=1 ;;
+	*) ZERO=0
 esac
 
 # Control de Gallery 2D
@@ -184,6 +191,7 @@ case "$TARGET_PRODUCT" in
 	aosp_geeksphone) cp -r $MOD_DATA/one/* $REPACK/ota/ ;;
 	aosp_passion) cp -r $MOD_DATA/passion/* $REPACK/ota/ ;;
 	aosp_z71) cp -r $MOD_DATA/z71/* $REPACK/ota/ ;;
+	aosp_zero) cp -r $MOD_DATA/zero/* $REPACK/ota/ ;;
 	*) printf "REVISA EL PRODUCT QUE ESTÁS COMPILANDO, NO TIENE CONFIGURACIÓN DE COPIADO DE ""DATA"""
 esac
 
@@ -236,6 +244,23 @@ mv  $REPACK/ota/system/app/Maps.apk $REPACK/ota/data/app/com.android.apps.maps.a
 mv  $REPACK/ota/system/app/VoiceSearch.apk $REPACK/ota/data/app/com.google.android.voiceSearch.apk$ENDCOLOR
 fi
 
+
+# Necesario para GeeksPhone Zero
+if [ "$ZERO" -eq 1 ]; then
+	echo " "
+	echo $BLUE" Dispositivo Zero"
+	echo " "
+	echo " Pasando archivos de system a data para conseguir espacio"
+rm -rf $REPACK/ota/system/app/Launcher2.apk
+rm -rf $REPACK/ota/system/app/RomManager.apk
+rm -rf $REPACK/ota/system/app/FM.apk
+rm -rf $REPACK/ota/system/app/Torch.apk
+mv  $REPACK/ota/system/app/Gmail.apk $REPACK/ota/data/app/com.google.android.gm.apk
+mv  $REPACK/ota/system/app/Street.apk $REPACK/ota/data/app/com.google.android.street.apk
+mv  $REPACK/ota/system/app/YouTube.apk $REPACK/ota/data/app/com.google.android.youtube.apk
+mv  $REPACK/ota/system/app/Maps.apk $REPACK/ota/data/app/com.android.apps.maps.apk
+mv  $REPACK/ota/system/app/VoiceSearch.apk $REPACK/ota/data/app/com.google.android.voiceSearch.apk$ENDCOLOR
+fi
 # Control de dispositivo para Nexus S
 if [ "$nexusS" -eq 1 ]; then
 	echo " "
@@ -324,7 +349,7 @@ rm -rf $REPACK/ota/system/lib/modules/*/kernel/drivers/net
 rm -r $REPACK/ota/recovery
 
 # Strip modulos
-if [ "$ONE" -eq 1 ] || [ "$nexus" -eq 1 ] || [ "$nexusS" -eq 1 ]; then
+if [ "$ONE" -eq 1 ] || [ "$nexus" -eq 1 ] || [ "$nexusS" -eq 1 ] || [ "$ZERO" -eq 1 ]; then
 echo ""
 echo $RED " No necesita comprimir modulos"
 echo ""
