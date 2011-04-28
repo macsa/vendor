@@ -2,22 +2,22 @@
 #Script Post Instalacion por Super@tmel
 # Script 12
 
-busybox mount -o remount,rw /system
+busybox mount -o remount,rw /system;
 
 #Control de SupSetup
 if [ -e /data/supsetup/sup.config ];
 then
     echo "+++ Restaurando el backup del SupSetup";
-	busybox cp -a /data/supsetup/sup.config /system/bin;
-	busybox rm -f /data/supsetup/sup.config;
-else
-    echo "+++ No existe backup de SupSetup"
+ 		busybox cp -a /data/supsetup/sup.config /system/bin;
+		busybox rm -f /data/supsetup/sup.config;
+		else
+	echo "+++ No existe backup de SupSetup"
 fi;
 
 # SetCPU Clocking
-# k
-echo 100000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq;
-echo 1100000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq;
+#
+echo 245000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq;
+echo 600000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq;
 echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor;
 echo 40000 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate;
 echo 50 > /proc/sys/vm/swappiness;
@@ -45,8 +45,8 @@ echo "Instalando aplicaciones"
  for i in /data/*.apk ; do 
 	install -c -D $i /data/app;
 echo "+++ Ejectuando limpieza"
-	busybox rm $i;
-done;
+	busybox rm /$i;
+ done;
 
 echo "+++ Acabando"
 if [ -e /data/firstboot.sh ];

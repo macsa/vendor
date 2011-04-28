@@ -26,7 +26,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_DEVICE=aosp_geeksphone PRODUCT_NAME=aosp
 #PRODUCT_SPECIFIC_DEFINES += TARGET_KERNEL_DIR=/media/COMPILER/mydroid/Kernels/kernel-one
 #PRODUCT_SPECIFIC_DEFINES += TARGET_KERNEL_CONFIG=superatmel2_defconfig
 
-PRODUCT_PACKAGE_OVERLAYS += vendor/macsa/overlay/geeksphone
+PRODUCT_PACKAGE_OVERLAYS += vendor/macsa/overlay/one
 
 #
 # Move dalvik cache to data partition where there is more room to solve startup problems
