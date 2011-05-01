@@ -37,8 +37,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Set ro.modversion
 #
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.modversion=SuperAosp-ST@-Nexus-S-6.4 \
-    ro.stats.romversion=6.4
+    ro.modversion=SuperAosp-ST@-Nexus-S-8.0 \
+    ro.stats.romversion=8.0
 #
 # Copy Nexus S specific prebuilt files
 #
