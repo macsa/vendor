@@ -17,7 +17,7 @@ fi;
 # SetCPU Clocking
 # k
 echo 100000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq;
-echo 1100000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq;
+echo 1000000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq;
 echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor;
 echo 40000 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate;
 echo 50 > /proc/sys/vm/swappiness;
