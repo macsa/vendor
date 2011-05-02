@@ -1,0 +1,6 @@
+#!/system/bin/sh
+echo "Control de sonido"
+busybox cp /system/bin/bootsound2 /system/bin/bootsound;
+busybox rm /system/bin/bootsound2;
+exit;
+

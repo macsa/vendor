@@ -307,7 +307,7 @@ rm -rf $REPACK/ota/system/lib/libWnnJpnDic.so
 rm -rf $REPACK/ota/system/lib/libwnndict.so
 mv $REPACK/ota/system/app/Development.apk $REPACK/ota/system/app/Development.app
 mv $REPACK/ota/system/app/FileManager.apk $REPACK/ota/system/app/FileManager.app
-mv $REPACK/ota/system/app/Stk.apk $REPACK/ota/system/app/Stk.app
+#mv $REPACK/ota/system/app/Stk.apk $REPACK/ota/system/app/Stk.app
 
 if [ "$WANT_SQUASHFS" -eq 1 ]; then
 	# Recoloca su
