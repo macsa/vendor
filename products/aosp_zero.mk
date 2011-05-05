@@ -20,7 +20,7 @@ PRODUCT_DEVICE := zero
 PRODUCT_MODEL := Geeksphone ZERO
 PRODUCT_MANUFACTURER := Geeksphone
 
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_DEVICE=aosp_zero PRODUCT_NAME=aosp_zero BUILD_ID=GRJ22 BUILD_DISPLAY_ID=GRJ22 BUILD_FINGERPRINT=google/passion/passion:2.3.3/GRI40/102588:user/release-keys PRIVATE_BUILD_DESC="passion-user 2.3.3 GRJ22 102588 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=geeksphone_zero BUILD_ID=FRG83 BUILD_DISPLAY_ID=GRJ22 BUILD_FINGERPRINT=qcom/msm7627_ffa/msm7627_ffa/7x27:2.2.1/FRG83/eng.SIMCOM.20110314.124514:user/test-keys PRIVATE_BUILD_DESC="msm7627_ffa-user 2.2.1 FRG83 eng.SIMCOM.20110314.124514 test-keys"
 
 # Build kernel
 PRODUCT_SPECIFIC_DEFINES += TARGET_PREBUILT_KERNEL=
@@ -47,7 +47,7 @@ PRODUCT_COPY_FILES +=  \
 	vendor/macsa/prebuilt/zero/etc/super/04modulos:system/etc/super/04modulos \
 	vendor/macsa/prebuilt/zero/etc/super2/01launcher:system/etc/super2/01launcher \
 	vendor/macsa/prebuilt/zero/etc/super2/02permisos:system/etc/super2/02permisos \
-	vendor/macsa/prebuilt/zero/etc/super2/03gps:system/etc/super2/03gps \
+	vendor/macsa/prebuilt/zero/etc/super2/03sound:system/etc/super2/03sound \
 	vendor/macsa/prebuilt/zero/etc/super2/04control:system/etc/super2/04control
 
 PRODUCT_LOCALES := es_ES ca_ES en_US de_DE eu_ES fr_FR it_IT pt_PT ru_RU mdpi

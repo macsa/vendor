@@ -15,7 +15,7 @@ PRODUCT_BRAND := google
 PRODUCT_DEVICE := dream_sapphire
 PRODUCT_MODEL := Dream/Sapphire
 PRODUCT_MANUFACTURER := HTC
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_ID=FRG83 BUILD_DISPLAY_ID=GRI40 BUILD_FINGERPRINT=tmobile/opal/sapphire/sapphire:2.2.1/FRG83/60505:user/release-keys PRIVATE_BUILD_DESC="opal-user 2.2.1 FRG83 60505 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_ID=FRG83 BUILD_DISPLAY_ID=GRJ22 BUILD_FINGERPRINT=tmobile/opal/sapphire/sapphire:2.2.1/FRG83/60505:user/release-keys PRIVATE_BUILD_DESC="opal-user 2.2.1 FRG83 60505 release-keys"
 
 # Extra Dream/Sapphire overlay
 PRODUCT_PACKAGE_OVERLAYS += vendor/macsa/overlay/dream_sapphire
@@ -57,7 +57,7 @@ PRODUCT_COPY_FILES +=  \
 	vendor/macsa/prebuilt/dream_sapphire/etc/super/04modulos:system/etc/super/04modulos \
 	vendor/macsa/prebuilt/dream_sapphire/etc/super2/01launcher:system/etc/super2/01launcher \
 	vendor/macsa/prebuilt/dream_sapphire/etc/super2/02permisos:system/etc/super2/02permisos \
-	vendor/macsa/prebuilt/dream_sapphire/etc/super2/03gps:system/etc/super2/03gps \
+	vendor/macsa/prebuilt/dream_sapphire/etc/super2/03sound:system/etc/super2/03sound \
 	vendor/macsa/prebuilt/dream_sapphire/etc/super2/04control:system/etc/super2/04control \
 	vendor/macsa/prebuilt/dream_sapphire/etc/permissions/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
 	vendor/macsa/prebuilt/dream_sapphire/system/usr/keychars/trout-keypad-v3.kcm.bineu:system/usr/keychars/trout-keypad-v3.kcm.bineu \

@@ -18,8 +18,7 @@ PRODUCT_BRAND := google
 PRODUCT_DEVICE := passion
 PRODUCT_MODEL := Nexus One
 PRODUCT_MANUFACTURER := HTC
-#PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=passion BUILD_ID=GRI40 BUILD_DISPLAY_ID=GRI40 BUILD_FINGERPRINT=google/passion/passion/mahimahi:2.3.3/GRI40/102588:user/release-keys PRIVATE_BUILD_DESC="passion-user 2.3.3 GRI40 102588 release-keys"
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=soju BUILD_ID=GRJ22 BUILD_DISPLAY_ID=GRJ22 BUILD_FINGERPRINT=google/soju/crespo:2.3.3/GRI40/102588:user/release-keys PRIVATE_BUILD_DESC="soju-user 2.3.3 GRJ22 102588 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=passion BUILD_ID=GRI40 BUILD_DISPLAY_ID=GRJ22 BUILD_FINGERPRINT=google/passion/passion:2.3.3/GRI40/102588:user/release-keys PRIVATE_BUILD_DESC="passion-user 2.3.3 GRI40 102588 release-key
 
 # Build kernel
 PRODUCT_SPECIFIC_DEFINES += TARGET_PREBUILT_KERNEL=
@@ -56,7 +55,7 @@ PRODUCT_COPY_FILES +=  \
 	vendor/macsa/prebuilt/passion/etc/super/04modulos:system/etc/super/04modulos \
 	vendor/macsa/prebuilt/passion/etc/super2/01launcher:system/etc/super2/01launcher \
 	vendor/macsa/prebuilt/passion/etc/super2/02permisos:system/etc/super2/02permisos \
-	vendor/macsa/prebuilt/passion/etc/super2/03gps:system/etc/super2/03gps \
+	vendor/macsa/prebuilt/passion/etc/super2/03sound:system/etc/super2/03sound \
 	vendor/macsa/prebuilt/passion/etc/super2/04control:system/etc/super2/04control
 
 PRODUCT_LOCALES := \
