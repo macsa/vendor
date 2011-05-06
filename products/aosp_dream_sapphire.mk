@@ -17,6 +17,7 @@ PRODUCT_MODEL := Dream/Sapphire
 PRODUCT_MANUFACTURER := HTC
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_ID=FRG83 BUILD_DISPLAY_ID=GRJ22 BUILD_FINGERPRINT=tmobile/opal/sapphire/sapphire:2.2.1/FRG83/60505:user/release-keys PRIVATE_BUILD_DESC="opal-user 2.2.1 FRG83 60505 release-keys"
 
+
 # Extra Dream/Sapphire overlay
 PRODUCT_PACKAGE_OVERLAYS += vendor/macsa/overlay/dream_sapphire
 
