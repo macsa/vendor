@@ -37,12 +37,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Set ro.modversion
 #
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.modversion=SuperAosp-ST@-Nexus-S-8.0 \
-    ro.stats.romversion=8.0
+    ro.modversion=SuperAosp-ST@-Nexus-S-AW-8.2 \
+    ro.stats.romversion=8.2
 #
 # Copy Nexus S specific prebuilt files
 #
 PRODUCT_COPY_FILES +=  \
+	vendor/macsa/prebuilt/crespo/etc/super/02ctrlwipe:system/etc/super/02ctrlwipe \
 	vendor/macsa/prebuilt/crespo/etc/super/04modulos:system/etc/super/04modulos \
 	vendor/macsa/prebuilt/crespo/etc/super2/01launcher:system/etc/super2/01launcher \
 	vendor/macsa/prebuilt/crespo/etc/super2/02permisos:system/etc/super2/02permisos \
