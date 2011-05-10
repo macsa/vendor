@@ -39,7 +39,7 @@ PRODUCT_COPY_FILES += \
 # Enable Compcache by default on D/S
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.modversion=SuperAosp-ST@-DM-6.2 \
-        ro.stats.romversion=6.2 \
+  ro.stats.romversion=6.2 \
 	ro.compcache.default=18 \
 	ro.config.alarm_alert=Beeps.mp3 \
 	ro.config.ringtone=Theway.mp3 \
@@ -81,3 +81,8 @@ PRODUCT_LOCALES := \
     mdpi
 
 PRODUCT_DEFAULT_LANGUAGE := es_ES
+
+#copiamos los recursos para el núcleo.
+PRODUCT_COPY_FILES += \
+    vendor/macsa/prebuilt/kernels/dream_sapphire/2708-modules.sqf:system/lib/modules/modules.sqf \
+    vendor/macsa/prebuilt/dream_sapphire/etc/init.d/12zram_compcache:system/etc/init.d/12zram_compcache
