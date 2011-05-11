@@ -78,6 +78,7 @@ PRODUCT_LOCALES := \
     it_IT \
     pt_PT \
     ru_RU \
+    pl_PL \
     mdpi
 
 PRODUCT_DEFAULT_LANGUAGE := es_ES
