@@ -250,7 +250,6 @@ if [ "$ZERO" -eq 1 ]; then
 	echo $BLUE" Dispositivo Zero"
 	echo " "
 	echo " Pasando archivos de system a data para conseguir espacio"
-rm -rf $REPACK/ota/system/app/Launcher2.apk
 rm -rf $REPACK/ota/system/app/RomManager.apk
 rm -rf $REPACK/ota/system/app/FM.apk
 rm -rf $REPACK/ota/system/app/Torch.apk
