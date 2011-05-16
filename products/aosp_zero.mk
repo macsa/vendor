@@ -9,7 +9,7 @@ $(call inherit-product, vendor/macsa/products/gsm.mk)
 
 #Activa el ADWLauncher
 PRODUCT_PACKAGES += \
-   ADWLauncher
+   Launcher2
 
 #
 # Setup device specific product configuration.
