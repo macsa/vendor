@@ -223,7 +223,7 @@ mv  $REPACK/ota/system/app/Gmail.apk $REPACK/ota/data/app/com.google.android.gm.
 mv  $REPACK/ota/system/app/Maps.apk $REPACK/ota/data/app/com.android.apps.maps.apk
 mv  $REPACK/ota/system/app/VoiceSearch.apk $REPACK/ota/data/app/com.google.android.voiceSearch.apk
 mv  $REPACK/ota/system/app/Street.apk $REPACK/ota/data/app/com.google.android.street.apk
-mv  $REPACK/ota/system/app/YouTube.apk $REPACK/ota/data/app/com.google.android.youtube.apk$ENDCOLOR
+mv  $REPACK/ota/system/app/YouTube.apk $REPACK/ota/data/app/com.google.android.youtube.apk
 fi
 
 # Necesario para GeeksPhone One
@@ -376,7 +376,7 @@ java -Xmx512m \
 echo
 #printf " Limpiando la casa..."
 echo $YELLOW"Limpiando el entorno..."$ENDCOLOR
-rm -r $REPACK
+rm -rf $REPACK
 
 # Crear md5 para el paquete firmado
 (
