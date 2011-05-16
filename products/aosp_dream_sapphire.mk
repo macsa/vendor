@@ -4,6 +4,9 @@ $(call inherit-product, device/htc/dream_sapphire/full_dream_sapphire.mk)
 # Inherit some common macsa stuff.
 $(call inherit-product, vendor/macsa/products/common.mk)
 
+# Añadimos los temas
+$(call inherit-product, vendor/macsa/products/themes_small.mk)
+
 # Include GSM stuff
 $(call inherit-product, vendor/macsa/products/gsm.mk)
 
@@ -38,8 +41,8 @@ PRODUCT_COPY_FILES += \
 
 # Enable Compcache by default on D/S
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.modversion=SuperAosp-ST@-DM-6.2 \
-  ro.stats.romversion=6.2 \
+	ro.modversion=SuperAosp-ST@-DS-6.4 \
+  ro.stats.romversion=6.4 \
 	ro.compcache.default=18 \
 	ro.config.alarm_alert=Beeps.mp3 \
 	ro.config.ringtone=Theway.mp3 \
@@ -55,8 +58,6 @@ WITH_DS_HTCACOUSTIC_HACK := true
 PRODUCT_COPY_FILES +=  \
 	vendor/macsa/prebuilt/dream_sapphire/etc/AudioPara_dream.csv:system/etc/AudioPara_dream.csv \
 	vendor/macsa/prebuilt/dream_sapphire/etc/AudioPara_sapphire.csv:system/etc/AudioPara_sapphire.csv \
-	vendor/macsa/prebuilt/dream_sapphire/etc/super/04modulos:system/etc/super/04modulos \
-	vendor/macsa/prebuilt/dream_sapphire/etc/super2/01launcher:system/etc/super2/01launcher \
 	vendor/macsa/prebuilt/dream_sapphire/etc/super2/02permisos:system/etc/super2/02permisos \
 	vendor/macsa/prebuilt/dream_sapphire/etc/super2/03sound:system/etc/super2/03sound \
 	vendor/macsa/prebuilt/dream_sapphire/etc/super2/04control:system/etc/super2/04control \
@@ -87,3 +88,5 @@ PRODUCT_DEFAULT_LANGUAGE := es_ES
 PRODUCT_COPY_FILES += \
     vendor/macsa/prebuilt/kernels/dream_sapphire/2708-modules.sqf:system/lib/modules/modules.sqf \
     vendor/macsa/prebuilt/dream_sapphire/etc/init.d/12zram_compcache:system/etc/init.d/12zram_compcache
+
+TARGET_BUILD_TYPE=release
