@@ -46,7 +46,8 @@ PRODUCT_PACKAGES += \
 #
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.modversion=SuperAosp-ST@-Nexus-8.4 \
-    ro.stats.romversion=8.4
+    ro.stats.romversion=8.4 \
+    ro.config.play.bootsound=0
 
 #
 # Copy Passion specific prebuilt files
