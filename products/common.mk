@@ -44,6 +44,7 @@ include vendor/macsa/products/themes_common.mk
 PRODUCT_COPY_FILES += \
     vendor/macsa/prebuilt/common/bin/verify_cache_partition_size.sh:system/bin/verify_cache_partition_size.sh \
     vendor/macsa/prebuilt/common/sd/vacio:system/sd/vacio \
+    vendor/macsa/prebuilt/common/etc/hosts:system/etc/hosts \
     vendor/macsa/prebuilt/common/etc/super/00inicio:system/etc/super/00inicio \
     vendor/macsa/prebuilt/common/etc/super/01sysctl:system/etc/super/01sysctl \
     vendor/macsa/prebuilt/common/etc/super/03firstboot:system/etc/super/03firstboot \

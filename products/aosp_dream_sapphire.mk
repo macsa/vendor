@@ -47,10 +47,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.config.alarm_alert=Beeps.mp3 \
 	ro.config.ringtone=Theway.mp3 \
 	ro.config.notification_sound=Bubbles.ogg \
-	ro.product.multi_touch_enabled=true
-
+	ro.product.multi_touch_enabled=true \
+  ro.config.play.bootsound=0
+  
 # Use the audio profile hack
 WITH_DS_HTCACOUSTIC_HACK := true
+
+#Añadimos permisos extra
+PRODUCT_COPY_FILES +=  \
+  frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml  
 
 #
 # Copy DS specific prebuilt files
@@ -60,7 +65,6 @@ PRODUCT_COPY_FILES +=  \
 	vendor/macsa/prebuilt/dream_sapphire/etc/AudioPara_sapphire.csv:system/etc/AudioPara_sapphire.csv \
 	vendor/macsa/prebuilt/dream_sapphire/etc/super2/02permisos:system/etc/super2/02permisos \
 	vendor/macsa/prebuilt/dream_sapphire/etc/super2/04control:system/etc/super2/04control \
-	vendor/macsa/prebuilt/dream_sapphire/etc/permissions/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
 	vendor/macsa/prebuilt/dream_sapphire/system/usr/keychars/trout-keypad-v3.kcm.bineu:system/usr/keychars/trout-keypad-v3.kcm.bineu \
 	vendor/macsa/prebuilt/dream_sapphire/system/usr/keychars/trout-keypad-v3.kcm.binus:system/usr/keychars/trout-keypad-v3.kcm.binus \
 	vendor/macsa/prebuilt/dream_sapphire/system/usr/keychars/trout-keypad-v3.kcm.bineu:system/usr/keychars/trout-keypad-v3.kcm.bin \
