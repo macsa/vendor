@@ -59,7 +59,6 @@ PRODUCT_COPY_FILES +=  \
 	vendor/macsa/prebuilt/dream_sapphire/etc/AudioPara_dream.csv:system/etc/AudioPara_dream.csv \
 	vendor/macsa/prebuilt/dream_sapphire/etc/AudioPara_sapphire.csv:system/etc/AudioPara_sapphire.csv \
 	vendor/macsa/prebuilt/dream_sapphire/etc/super2/02permisos:system/etc/super2/02permisos \
-	vendor/macsa/prebuilt/dream_sapphire/etc/super2/03sound:system/etc/super2/03sound \
 	vendor/macsa/prebuilt/dream_sapphire/etc/super2/04control:system/etc/super2/04control \
 	vendor/macsa/prebuilt/dream_sapphire/etc/permissions/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
 	vendor/macsa/prebuilt/dream_sapphire/system/usr/keychars/trout-keypad-v3.kcm.bineu:system/usr/keychars/trout-keypad-v3.kcm.bineu \

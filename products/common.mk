@@ -58,7 +58,6 @@ PRODUCT_COPY_FILES += \
     vendor/macsa/prebuilt/common/bin/apps2sd:system/bin/apps2sd \
     vendor/macsa/prebuilt/common/bin/actapps2sd:system/bin/actapps2sd \
     vendor/macsa/prebuilt/common/bin/bootsound:system/bin/bootsound \
-    vendor/macsa/prebuilt/common/bin/bootsound2:system/bin/bootsound2 \
     vendor/macsa/prebuilt/common/bin/compcache:system/bin/compcache \
     vendor/macsa/prebuilt/common/bin/desap:system/bin/desap \
     vendor/macsa/prebuilt/common/bin/fix_permissions:system/bin/fix_permissions \

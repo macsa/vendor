@@ -33,7 +33,6 @@ PRODUCT_COPY_FILES +=  \
 	vendor/macsa/prebuilt/hero/etc/super/04modulos:system/etc/super/04modulos \
 	vendor/macsa/prebuilt/hero/etc/super2/01launcher:system/etc/super2/01launcher \
 	vendor/macsa/prebuilt/hero/etc/super2/02permisos:system/etc/super2/02permisos \
-	vendor/macsa/prebuilt/hero/etc/super2/03sound:system/etc/super2/03sound \
 	vendor/macsa/prebuilt/hero/etc/super2/04control:system/etc/super2/04control
 
 PRODUCT_LOCALES := \

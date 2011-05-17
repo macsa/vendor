@@ -59,4 +59,4 @@ on property:init.svc.bootanim=running # to correct timin
  start bootsound
 
 #on property:dev.bootcomplete=1
-# stop bootsound
+ stop bootsound
