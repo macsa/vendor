@@ -110,6 +110,12 @@ esac
 
 #Control de Dispositivo
 case "$TARGET_PRODUCT" in
+	aosp_galaxysmtd) galaxyS=1 ;;
+	*) galaxyS=0
+esac
+
+#Control de Dispositivo
+case "$TARGET_PRODUCT" in
 	aosp_zero) ZERO=1 ;;
 	*) ZERO=0
 esac
@@ -186,6 +192,7 @@ case "$TARGET_PRODUCT" in
 	aosp_buzz) cp -r $MOD_DATA/buzz/* $REPACK/ota/ ;;
 	aosp_crespo) cp -r $MOD_DATA/crespo/* $REPACK/ota/ ;;
 	aosp_dream_sapphire) cp -r $MOD_DATA/dream_sapphire/* $REPACK/ota/ ;;
+	aosp_galaxysmtd) cp -r $MOD_DATA/galaxys/* $REPACK/ota/ ;;
 	aosp_hero) cp -r $MOD_DATA/hero/* $REPACK/ota/ ;;
 	aosp_legend) cp -r $MOD_DATA/legend/* $REPACK/ota/ ;;
 	aosp_geeksphone) cp -r $MOD_DATA/one/* $REPACK/ota/ ;;
@@ -259,6 +266,13 @@ mv  $REPACK/ota/system/app/YouTube.apk $REPACK/ota/data/app/com.google.android.y
 mv  $REPACK/ota/system/app/Maps.apk $REPACK/ota/data/app/com.android.apps.maps.apk
 mv  $REPACK/ota/system/app/VoiceSearch.apk $REPACK/ota/data/app/com.google.android.voiceSearch.apk$ENDCOLOR
 fi
+
+# Control de dispositivo para Galaxy S
+if [ "$galaxyS" -eq 1 ]; then
+	echo " "
+	echo $BLUE" Dispositivo Galaxy S"$ENDCOLOR
+fi
+
 # Control de dispositivo para Nexus S
 if [ "$nexusS" -eq 1 ]; then
 	echo " "
@@ -336,6 +350,19 @@ sed -i \
 	-e '/ro\.kernel\.android\.checkjni/d' \
 	-e '/ro\.build\.type/s/eng/user/' \
 	$REPACK/ota/system/build.prop
+
+# Control de dispositivo para Galaxy S
+if [ "$galaxyS" -eq 1 ]; then
+	echo " "
+	sed -i 's/ro.kernel.android.checkjni=0//g' $REPACK/ota/system/build.prop
+	sed -i 's/ro.kernel.android.checkjni=1//g' $REPACK/ota/system/build.prop
+	sed -i 's/ro.config.alarm_alert=Alarm_Classic.ogg//g' $REPACK/ota/system/build.prop
+	sed -i 's/ro.config.notification_sound=OnTheHunt.ogg//g' $REPACK/ota/system/build.prop
+	sed -i 's/ro.config.ringtone=Playa.ogg//g' $REPACK/ota/system/build.prop
+else
+echo " "
+fi
+
 
 # Eliminar binarios innecesarios
 ( cd $REPACK/ota/system/bin; echo $DELETE_BINS | xargs rm -f; )

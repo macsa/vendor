@@ -4,10 +4,12 @@ PRODUCT_BRAND := aosp
 PRODUCT_DEVICE := generic
 
 # Used by BusyBox
-KERNEL_MODULES_DIR := /system/lib/modules
+KERNEL_MODULES_DIR:=/system/lib/modules
 
 # Tiny toolbox
-TINY_TOOLBOX := true
+TINY_TOOLBOX:=true
+
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
@@ -15,6 +17,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.google.clientidbase=android-google \
     ro.com.android.wifi-watchlist=GoogleGuest \
     ro.setupwizard.enterprise_mode=1 \
+    ro.com.android.dateformat=MM-dd-yyyy \
+    ro.com.android.dataroaming=false \
     ro.stats.devname=SuperTe@m \
     ro.stats.romname=SuperAosp
 
@@ -30,6 +34,7 @@ PRODUCT_PACKAGES += \
    Parts \
    Stk \
    Wallpapers
+
 
 # Activa Voip
 PRODUCT_COPY_FILES += \
