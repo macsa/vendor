@@ -53,6 +53,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Copy Passion specific prebuilt files
 #
 PRODUCT_COPY_FILES +=  \
+	vendor/macsa/prebuilt/passion/etc/super/02ctrlwipe:system/etc/super/02ctrlwipe \
 	vendor/macsa/prebuilt/passion/etc/super/04modulos:system/etc/super/04modulos \
 	vendor/macsa/prebuilt/passion/etc/super2/01launcher:system/etc/super2/01launcher \
 	vendor/macsa/prebuilt/passion/etc/super2/02permisos:system/etc/super2/02permisos \

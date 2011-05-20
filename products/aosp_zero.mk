@@ -44,6 +44,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Copy DS specific prebuilt files
 #
 PRODUCT_COPY_FILES +=  \
+	vendor/macsa/prebuilt/zero/etc/super/02ctrlwipe:system/etc/super/02ctrlwipe \
 	vendor/macsa/prebuilt/zero/etc/super/04modulos:system/etc/super/04modulos \
 	vendor/macsa/prebuilt/zero/etc/super2/01launcher:system/etc/super2/01launcher \
 	vendor/macsa/prebuilt/zero/etc/super2/02permisos:system/etc/super2/02permisos \

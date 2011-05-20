@@ -36,6 +36,10 @@ PRODUCT_PACKAGES += \
 # Include apps
 PRODUCT_PACKAGES += Gallery
 
+PRODUCT_COPY_FILES += \
+	vendor/macsa/prebuilt/dream_sapphire/etc/super/02audio:system/etc/super/02audio \
+	vendor/macsa/prebuilt/dream_sapphire/etc/super/02ctrlwipe:system/etc/super/02ctrlwipe
+
 # Enable Compcache by default on D/S
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.modversion=SuperAosp-ST@-DS-6.4 \
