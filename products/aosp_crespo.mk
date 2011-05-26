@@ -15,8 +15,7 @@ PRODUCT_BRAND := google
 PRODUCT_DEVICE := crespo
 PRODUCT_MODEL := Nexus S
 PRODUCT_MANUFACTURER := Samsung
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=soju BUILD_ID=GRJ22 BUILD_DISPLAY_ID=GRJ22 BUILD_FINGERPRINT=google/soju/crespo:2.3.4/GRJ22/121341:user/release-keys PRIVATE_BUILD_DESC="soju-user 2.3.4 GRJ22 121341 release-keys"
-
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=soju BUILD_ID=GRJ22 BUILD_DISPLAY_ID=GRJ22 BUILD_FINGERPRINT=google/soju/crespo:2.3.4/GRJ22/121341:user/release-keys PRIVATE_BUILD_DESC="soju-user 2.3.4 GRJ22 121341 release-keys" BUILD_NUMBER=121341
 
 # Extra Crespo overlay
 PRODUCT_PACKAGE_OVERLAYS += vendor/macsa/overlay/crespo
@@ -37,8 +36,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Set ro.modversion
 #
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.modversion=SuperAosp-ST@-Nexus-S-AW-8.2 \
-    ro.stats.romversion=8.2
+    ro.modversion=SuperAosp-ST@-Nexus-S-AW-8.4 \
+    ro.stats.romversion=8.4 \
+    ro.config.play.bootsound=0
 #
 # Copy Nexus S specific prebuilt files
 #
@@ -47,7 +47,6 @@ PRODUCT_COPY_FILES +=  \
 	vendor/macsa/prebuilt/crespo/etc/super/04modulos:system/etc/super/04modulos \
 	vendor/macsa/prebuilt/crespo/etc/super2/01launcher:system/etc/super2/01launcher \
 	vendor/macsa/prebuilt/crespo/etc/super2/02permisos:system/etc/super2/02permisos \
-	vendor/macsa/prebuilt/crespo/etc/super2/03sound:system/etc/super2/03sound \
 	vendor/macsa/prebuilt/crespo/etc/super2/04control:system/etc/super2/04control
 
 #PRODUCT_LOCALES := \

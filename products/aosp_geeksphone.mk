@@ -39,7 +39,8 @@ PRODUCT_PROPERTY_OVERRIDES += dalvik.vm.dexopt-data-only=1
 #
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.modversion=SuperAosp-ST@-ONE-8.0 \
-    ro.stats.romversion=8.0
+    ro.stats.romversion=8.0 \
+    ro.config.play.bootsound=0
 
 # Copy DS specific prebuilt files
 #
@@ -48,7 +49,6 @@ PRODUCT_COPY_FILES +=  \
 	vendor/macsa/prebuilt/one/etc/super/04modulos:system/etc/super/04modulos \
 	vendor/macsa/prebuilt/one/etc/super2/01launcher:system/etc/super2/01launcher \
 	vendor/macsa/prebuilt/one/etc/super2/02permisos:system/etc/super2/02permisos \
-	vendor/macsa/prebuilt/one/etc/super2/03sound:system/etc/super2/03sound \
 	vendor/macsa/prebuilt/one/etc/super2/04control:system/etc/super2/04control
 
 PRODUCT_LOCALES := es_ES ca_ES en_US de_DE eu_ES fr_FR it_IT pt_PT ru_RU mdpi

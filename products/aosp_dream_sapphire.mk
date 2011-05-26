@@ -37,7 +37,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += Gallery
 
 PRODUCT_COPY_FILES += \
-	vendor/macsa/prebuilt/dream_sapphire/etc/super/02audio:system/etc/super/02audio
+	vendor/macsa/prebuilt/dream_sapphire/etc/super/02audio:system/etc/super/02audio \
+	vendor/macsa/prebuilt/dream_sapphire/etc/super/02ctrlwipe:system/etc/super/02ctrlwipe
 
 # Enable Compcache by default on D/S
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -48,9 +49,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.config.ringtone=Theway.mp3 \
 	ro.config.notification_sound=Bubbles.ogg \
 	ro.product.multi_touch_enabled=true
-
+  
 # Use the audio profile hack
 WITH_DS_HTCACOUSTIC_HACK := true
+
+#Añadimos permisos extra
+PRODUCT_COPY_FILES +=  \
+  frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml  
 
 #
 # Copy DS specific prebuilt files
@@ -58,16 +63,9 @@ WITH_DS_HTCACOUSTIC_HACK := true
 PRODUCT_COPY_FILES +=  \
 	vendor/macsa/prebuilt/dream_sapphire/etc/AudioPara_dream.csv:system/etc/AudioPara_dream.csv \
 	vendor/macsa/prebuilt/dream_sapphire/etc/AudioPara_sapphire.csv:system/etc/AudioPara_sapphire.csv \
+  vendor/macsa/prebuilt/dream_sapphire/etc/super/02audio:system/etc/super/02audio \
 	vendor/macsa/prebuilt/dream_sapphire/etc/super2/02permisos:system/etc/super2/02permisos \
-	vendor/macsa/prebuilt/dream_sapphire/etc/super2/03sound:system/etc/super2/03sound \
-	vendor/macsa/prebuilt/dream_sapphire/etc/super2/04control:system/etc/super2/04control \
-	vendor/macsa/prebuilt/dream_sapphire/etc/permissions/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
-	vendor/macsa/prebuilt/dream_sapphire/system/usr/keychars/trout-keypad-v3.kcm.bineu:system/usr/keychars/trout-keypad-v3.kcm.bineu \
-	vendor/macsa/prebuilt/dream_sapphire/system/usr/keychars/trout-keypad-v3.kcm.binus:system/usr/keychars/trout-keypad-v3.kcm.binus \
-	vendor/macsa/prebuilt/dream_sapphire/system/usr/keychars/trout-keypad-v3.kcm.bineu:system/usr/keychars/trout-keypad-v3.kcm.bin \
-	vendor/macsa/prebuilt/dream_sapphire/system/usr/keylayout/trout-keypad-v3.kleu:system/usr/keylayout/trout-keypad-v3.kleu \
-	vendor/macsa/prebuilt/dream_sapphire/system/usr/keylayout/trout-keypad-v3.klus:system/usr/keylayout/trout-keypad-v3.klus \
-	vendor/macsa/prebuilt/dream_sapphire/system/usr/keylayout/trout-keypad-v3.kleu:system/usr/keylayout/trout-keypad-v3.kl
+	vendor/macsa/prebuilt/dream_sapphire/etc/super2/04control:system/etc/super2/04control 
 
 PRODUCT_LOCALES := \
     es_ES \
@@ -80,6 +78,7 @@ PRODUCT_LOCALES := \
     pt_PT \
     ru_RU \
     pl_PL \
+    nl_NL \
     mdpi
 
 PRODUCT_DEFAULT_LANGUAGE := es_ES
@@ -87,6 +86,6 @@ PRODUCT_DEFAULT_LANGUAGE := es_ES
 #copiamos los recursos para el núcleo.
 PRODUCT_COPY_FILES += \
     vendor/macsa/prebuilt/kernels/dream_sapphire/2708-modules.sqf:system/lib/modules/modules.sqf \
-    vendor/macsa/prebuilt/dream_sapphire/etc/init.d/12zram_compcache:system/etc/init.d/12zram_compcache
+    vendor/macsa/prebuilt/dream_sapphire/etc/super/12zram_compcache:system/etc/super/12zram_compcache
 
 TARGET_BUILD_TYPE=release

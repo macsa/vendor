@@ -48,11 +48,12 @@ esac
 
 # Discriminación de que dispositivos no tendran animacion especial
 case "$TARGET_PRODUCT" in
+	aosp_crespo) NOANIM=0 ;;
+        aosp_dream_sapphire) NOANIM=1 ;;
+	aosp_galaxysmtd) NOANIM=0 ;;
 	aosp_geeksphone) NOANIM=1 ;;
         aosp_hero) NOANIM=1 ;;
-        aosp_dream_sapphire) NOANIM=1 ;;
         aosp_passion) NOANIM=0 ;;
-	aosp_crespo) NOANIM=0 ;;
 	aosp_zero) NOANIM=0 ;;
 	*) NOANIM=0
 esac
@@ -192,11 +193,14 @@ case "$TARGET_PRODUCT" in
 	*)
 esac
 
-#Copia de fondo de pantalla para Nexus S
+#Copia de fondo de pantalla para Nexus S y Samsung Galaxy S
 case "$TARGET_PRODUCT" in
 	aosp_crespo) cp -rf $FRAME_IMG_HDPI_NEXUSS res/ ;;
+	aosp_galaxysmtd) cp -rf $FRAME_IMG_HDPI_NEXUSS res/ ;;
+
 	*)
 esac
+
 echo $RED
     for x in `find . -name "*.png" | grep -v "\.9.png$" | tr "\n" " "`
     do
