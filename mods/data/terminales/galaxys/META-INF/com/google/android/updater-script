@@ -182,21 +182,6 @@ package_extract_file("system/bin/verify_cache_partition_size.sh", "/tmp/verify_c
 set_perm(0, 0, 0777, "/tmp/verify_cache_partition_size.sh");
 run_program("/tmp/verify_cache_partition_size.sh");
 show_progress(0.200000, 10);
-unmount("/system");
-mount("vfat", "MTD", "/devices/platform/s3c-sdhci.2/mmc_host/mmc2", "/mnt/sdcard");
-ui_print("");
-ui_print("Instalando scripts y realizando limpieza");
-package_extract_dir("boot","/tmp/boot");
-set_perm(0,0, 0777, "/tmp/boot/borrarmedia.sh");
-run_program("/tmp/boot/borrarmedia.sh");
-ui_print("");
-package_extract_dir("sdcard", "/mnt/sdcard");
-ui_print("");
-ui_print("Limpiando thumbnails");
-package_extract_file("system/bin/thumbnails.sh", "/tmp/thumbnails.sh");
-set_perm(0, 0, 0777, "/tmp/thumbnails.sh");
-run_program("/tmp/thumbnails.sh");
-unmount("/sdcard");
 ui_print("");
 ui_print("Instalando aplicaciones Extras");
 mount("ext4", "MTD", "/dev/block/mmcblk0p2", "/data");
@@ -216,4 +201,5 @@ assert(package_extract_file("boot.img", "/tmp/boot.img"),
 ui_print(" ");
 ui_print("Instalacion finalizada!!!!");
 show_progress(0.100000, 0);
+unmount("/system");
 ui_print(" ");

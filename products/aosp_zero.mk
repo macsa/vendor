@@ -9,7 +9,9 @@ $(call inherit-product, vendor/macsa/products/gsm.mk)
 
 #Activa el ADWLauncher
 PRODUCT_PACKAGES += \
-   Launcher2
+   Launcher2 \
+   libRS \
+   librs_jni
 
 #
 # Setup device specific product configuration.
@@ -37,8 +39,8 @@ PRODUCT_PROPERTY_OVERRIDES += dalvik.vm.dexopt-data-only=1
 # Set ro.modversion
 #
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.modversion=SuperAosp-ST@-ZERO-8.0 \
-    ro.stats.romversion=8.0 \
+    ro.modversion=SuperAosp-ST@-ZERO-8.4-AW \
+    ro.stats.romversion=8.4 \
     ro.config.play.bootsound=0
 
 # Copy DS specific prebuilt files
